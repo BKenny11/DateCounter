@@ -1,6 +1,8 @@
 <resources>
-    <string name="app_name">DateCounter</string>
+    <string name="app_name">Date Counter</string>
 
     <string name="hello_world">Countdown / Countup</string>
     <string name="action_settings">About</string>
+    <string name="title_activity_add">Add Event</string>
+    <string name="hello_Add">Add Date!</string>
 </resources>
