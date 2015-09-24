@@ -9,7 +9,19 @@
                 tools:context="com.brendan_and_eric.datecounter.AddActivity">
 
     <TextView
-        android:text="@string/hello_world"
+        android:text="Type of Event"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:text="Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:text="Date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:text="Set Update Notification"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
     <Button android:layout_width="fill_parent" android:layout_height="wrap_content"
