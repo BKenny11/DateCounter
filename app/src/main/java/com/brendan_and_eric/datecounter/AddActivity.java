@@ -1,9 +1,15 @@
 package com.brendan_and_eric.datecounter;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Switch;
+import android.widget.TextView;
 
 public class AddActivity extends AppCompatActivity {
 
@@ -33,5 +39,20 @@ public class AddActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    public void changeCountType (View view){
+        Switch sv1 = (Switch)findViewById(R.id.mySwitch);
+        TextView tv1 = (TextView) findViewById(R.id.eventTitle);
+        if(sv1.isChecked() == true) {
+            tv1.setText("Countup");
+        }else{
+            tv1.setText("Countdown");
+        }
+    }
+
+
+
+    public void addItem (View view){
+        this.finish();
     }
 }

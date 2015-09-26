@@ -44,8 +44,5 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-    public void changeCountType (View view){
-        TextView tv1 = (TextView)findViewById(R.id.eventTitle);
-        tv1.setText("is a Countup");
-    }
+
 }

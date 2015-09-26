@@ -23,7 +23,7 @@
         android:layout_toRightOf="@id/nameTitle"
         />
     <TextView
-        android:text="Type of Event is"
+        android:text="Type of Event is a"
         android:layout_marginTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -31,7 +31,7 @@
     <TextView
         android:text="@string/counterSetting"
         android:id="@+id/eventTitle"
-        android:layout_marginTop="20dp"
+        android:textSize="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         />
@@ -41,7 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:onClick=""/>
+        android:onClick="changeCountType"/>
     <TextView
         android:text="Select a Date"
         android:layout_marginTop="20dp"
@@ -72,6 +72,7 @@
     <Button android:layout_width="fill_parent" android:layout_height="wrap_content"
         android:text="@string/hello_Add"
             android:layout_alignParentBottom="true"
+            android:onClick="addItem"
         />
 
 </LinearLayout>
