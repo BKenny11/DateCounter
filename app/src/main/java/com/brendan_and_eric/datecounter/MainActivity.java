@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Switch;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,7 +44,8 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-    public void addItem (View view){
-
+    public void changeCountType (View view){
+        TextView tv1 = (TextView)findViewById(R.id.eventTitle);
+        tv1.setText("is a Countup");
     }
 }
