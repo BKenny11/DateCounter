@@ -7,4 +7,10 @@
     <string name="hello_Add">Add Date!</string>
     <string name="counterSetting">Countdown</string>
     <string name="date_picker_title">Date of Event:</string>
+    <string-array name="Counter_array">
+        <item>Daily</item>
+        <item>Weekly</item>
+        <item>Monthly</item>
+        <item>Yearly</item>
+    </string-array>
 </resources>
