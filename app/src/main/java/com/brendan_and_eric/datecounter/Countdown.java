@@ -17,7 +17,7 @@ public class Countdown {
     private List<Countdown> mCountdowns;
 
     private void initializeData() {
-        mCountdowns = new ArrayList<>();
+        mCountdowns = new ArrayList<Countdown>();
         mCountdowns.add(new Countdown("Birthday", "September 15", "352 days"));
         mCountdowns.add(new Countdown("Anniversary", "October 6", "9 days"));
         mCountdowns.add(new Countdown("Vacation", "October 2", "5 days"));
