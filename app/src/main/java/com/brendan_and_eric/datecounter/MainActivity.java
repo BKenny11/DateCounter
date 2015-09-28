@@ -11,6 +11,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+<<<<<<< HEAD
+=======
+import android.view.View;
+import android.widget.Switch;
+import android.widget.TextView;
+>>>>>>> 5af7fb39664b679c30092d4d43e621db3440dc0c
 
 public class MainActivity extends AppCompatActivity {
 
@@ -89,7 +95,8 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            Intent intent = new Intent(this, AboutActivity.class);
+            startActivity(intent);
         }
 
         if (id == R.id.addButton){
@@ -100,4 +107,9 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+<<<<<<< HEAD
 }
+=======
+
+}
+>>>>>>> 5af7fb39664b679c30092d4d43e621db3440dc0c

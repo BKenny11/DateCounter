@@ -5,4 +5,13 @@
     <string name="action_settings">About</string>
     <string name="title_activity_add">Add Event</string>
     <string name="hello_Add">Add Date!</string>
+    <string name="counterSetting">Countdown</string>
+    <string name="date_picker_title">Date of Event:</string>
+    <string-array name="Counter_array">
+        <item>Daily</item>
+        <item>Weekly</item>
+        <item>Monthly</item>
+        <item>Yearly</item>
+    </string-array>
+    <string name="title_activity_about">About This App</string>
 </resources>
