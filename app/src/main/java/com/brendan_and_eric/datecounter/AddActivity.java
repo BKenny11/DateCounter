@@ -1,7 +1,10 @@
 package com.brendan_and_eric.datecounter;
 
+<<<<<<< HEAD
 import android.support.v7.app.AppCompatActivity;
 
+=======
+>>>>>>> 0306668a5b879008e223ff10fce0f9d3d6ef194a
 import android.support.v7.app.ActionBar;
 import android.app.AlertDialog;
 import android.app.Dialog;

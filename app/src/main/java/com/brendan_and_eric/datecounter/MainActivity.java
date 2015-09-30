@@ -14,6 +14,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Switch;
 import android.widget.TextView;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0306668a5b879008e223ff10fce0f9d3d6ef194a
 
 public class MainActivity extends AppCompatActivity {
 
@@ -107,4 +111,10 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+<<<<<<< HEAD
 }
+=======
+
+}
+
+>>>>>>> 0306668a5b879008e223ff10fce0f9d3d6ef194a
