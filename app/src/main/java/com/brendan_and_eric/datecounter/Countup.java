@@ -1,9 +1,9 @@
 package com.brendan_and_eric.datecounter;
 
-public class Countdown {
+public class Countup {
     private String mEvent;
     private String mDate;
-    private String mDaysLeft;
+    private String mDaysAgo;
 
     public String getEvent() {
         return mEvent;
@@ -21,11 +21,11 @@ public class Countdown {
         this.mDate = date;
     }
 
-    public String getDaysLeft() {
-        return mDaysLeft;
+    public String getDaysAgo() {
+        return mDaysAgo;
     }
 
-    public void setDaysLeft(String daysLeft) {
-        this.mDaysLeft = daysLeft;
+    public void setDaysAgo(String daysAgo) {
+        this.mDaysAgo = daysAgo;
     }
 }

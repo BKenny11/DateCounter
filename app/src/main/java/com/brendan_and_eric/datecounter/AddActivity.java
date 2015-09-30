@@ -1,14 +1,13 @@
 package com.brendan_and_eric.datecounter;
 
-<<<<<<< HEAD
+import android.support.v7.app.AppCompatActivity;
+
 import android.support.v7.app.ActionBar;
-=======
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.FragmentManager;
 import android.content.DialogInterface;
 import android.content.Intent;
->>>>>>> 5af7fb39664b679c30092d4d43e621db3440dc0c
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;

@@ -11,12 +11,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-<<<<<<< HEAD
-=======
 import android.view.View;
 import android.widget.Switch;
 import android.widget.TextView;
->>>>>>> 5af7fb39664b679c30092d4d43e621db3440dc0c
 
 public class MainActivity extends AppCompatActivity {
 
@@ -52,11 +49,14 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int pos) {
-            switch(pos) {
+            switch (pos) {
 
-                case 0: return PageFragment.newInstance();
-                case 1: return PageFragment2.newInstance();
-                default: return PageFragment.newInstance();
+                case 0:
+                    return PageFragment.newInstance();
+                case 1:
+                    return PageFragment2.newInstance();
+                default:
+                    return PageFragment.newInstance();
             }
         }
 
@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public CharSequence getPageTitle(int position) {
             String title = "";
-            if(position == 0)
+            if (position == 0)
                 title = "Countdowns";
             if (position == 1)
                 title = "Countups";
@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
-        if (id == R.id.addButton){
+        if (id == R.id.addButton) {
             Intent intent = new Intent(this, AddActivity.class);
 
             startActivity(intent);
@@ -107,9 +107,4 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-<<<<<<< HEAD
 }
-=======
-
-}
->>>>>>> 5af7fb39664b679c30092d4d43e621db3440dc0c

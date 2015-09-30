@@ -18,9 +18,9 @@ import java.util.List;
 
 public class PageFragment extends Fragment {
 
-    private RecyclerView mCountdownRecyclerView;
-    //ArrayList<Countdown> countdowns = new ArrayList<>();
-    //CountdownAdapter mAdapter;
+    RecyclerView mRecyclerView;
+    RecyclerView.LayoutManager mLayoutManager;
+    RecyclerView.Adapter mAdapter;
 
     public static PageFragment newInstance() {
         return new PageFragment();
@@ -41,61 +41,15 @@ public class PageFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_page, container, false);
 
-        //mCountdownRecyclerView = (RecyclerView) view.findViewById(R.id.countdown_rv);
-        //LinearLayoutManager llm = new LinearLayoutManager(getContext());
-        //mCountdownRecyclerView.setLayoutManager(llm);
+        mRecyclerView = (RecyclerView) view.findViewById(R.id.cd_rv);
+        mRecyclerView.setHasFixedSize(true);
 
-        //mAdapter = new CountdownAdapter(countdowns);
-        //mCountdownRecyclerView.setAdapter(mAdapter);
+        mLayoutManager = new LinearLayoutManager(view.getContext());
+        mRecyclerView.setLayoutManager(mLayoutManager);
+
+        mAdapter = new CDCardAdapter();
+        mRecyclerView.setAdapter(mAdapter);
 
         return view;
-    }
-
-    public class CountdownAdapter extends RecyclerView.Adapter<CountdownAdapter.CountdownViewHolder>{
-
-        public class CountdownViewHolder extends RecyclerView.ViewHolder {
-            CardView cv;
-            TextView event;
-            TextView date;
-            TextView days;
-
-            CountdownViewHolder(View itemView) {
-                super(itemView);
-                cv = (CardView)itemView.findViewById(R.id.countdown_cv);
-                event = (TextView)itemView.findViewById(R.id.countdown_event_name);
-                date = (TextView)itemView.findViewById(R.id.countdown_date);
-                days = (TextView)itemView.findViewById(R.id.countdown_days);
-            }
-        }
-
-        List<Countdown> countdowns;
-
-        CountdownAdapter(List<Countdown> countdowns){
-            this.countdowns = countdowns;
-        }
-
-        @Override
-        public int getItemCount() {
-            return countdowns.size();
-        }
-
-        @Override
-        public CountdownViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-            View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.fragment_page, viewGroup, false);
-            CountdownViewHolder cvh = new CountdownViewHolder(v);
-            return cvh;
-        }
-
-        @Override
-        public void onBindViewHolder(CountdownViewHolder countdownViewHolder, int i) {
-            countdownViewHolder.event.setText(countdowns.get(i).event);
-            countdownViewHolder.date.setText(countdowns.get(i).date);
-            countdownViewHolder.days.setText(countdowns.get(i).daysLeft);
-        }
-
-        @Override
-        public void onAttachedToRecyclerView(RecyclerView recyclerView) {
-            super.onAttachedToRecyclerView(recyclerView);
-        }
     }
 }
