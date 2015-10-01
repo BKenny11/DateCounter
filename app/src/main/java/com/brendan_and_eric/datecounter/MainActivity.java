@@ -126,11 +126,11 @@ public class MainActivity extends AppCompatActivity {
             String message = intent.getStringExtra(AddActivity.EXTRA_EVENT_TITLE);
             String type = intent.getStringExtra(AddActivity.EXTRA_EVENT_TYPE);
             String date = intent.getStringExtra(AddActivity.EXTRA_EVENT_DATE);
-
+            String days = intent.getStringExtra(AddActivity.EXTRA_EVENT_DIFFERENCE);
             if (type.contains("false")) {
-                CDAdapter.addItem(message, date);
+                CDAdapter.addItem(message, date, days);
             }else if (type.contains("true")){
-                CUAdapter.addItem(message, date);
+                CUAdapter.addItem(message, date, days);
             }
           }
 

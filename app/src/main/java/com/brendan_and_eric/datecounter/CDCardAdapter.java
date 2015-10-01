@@ -36,11 +36,11 @@ public class CDCardAdapter extends RecyclerView.Adapter<CDCardAdapter.ViewHolder
         viewHolder.tvDaysLeft.setText(countdown.getDaysLeft());
     }
 
-    public void addItem(String title, String date){
+    public void addItem(String title, String date, String days){
         Countdown countdown = new Countdown();
         countdown.setEvent(title);
         countdown.setDate(date);
-        countdown.setDaysLeft("351 days");
+        countdown.setDaysLeft(days);
         mCountdowns.add(countdown);
 
 

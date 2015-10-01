@@ -22,7 +22,10 @@ import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 public class AddActivity extends AppCompatActivity {
 
@@ -83,6 +86,7 @@ public class AddActivity extends AppCompatActivity {
     public final static String EXTRA_EVENT_TITLE = "com.brenken.myfirstapp.MESSAGE";
     public final static String EXTRA_EVENT_TYPE = "com.brenken.myfirstapp.TYPE";
     public final static String EXTRA_EVENT_DATE = "com.brenken.myfirstapp.DATE";
+    public final static String EXTRA_EVENT_DIFFERENCE = "com.brenken.myfirstapp.DIFFERENCE";
     public void addItem (View view){
         Intent intent = new Intent(this, MainActivity.class);
         EditText editText = (EditText) findViewById(R.id.editNameText);
@@ -91,12 +95,38 @@ public class AddActivity extends AppCompatActivity {
 
         DatePicker date = (DatePicker) findViewById(R.id.Date);
 
+        Date now = Calendar.getInstance().getTime();
+        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy", Locale.US);
+        String formattedDate = formatter.format(now);
+
         String day = String.valueOf(date.getDayOfMonth());
         String month = String.valueOf(date.getMonth());
         String year = String.valueOf(date.getYear());
 
-        String dater = day+"/"+month+"/"+year;
+        String dater = month+"/"+day+"/"+year;
 
+        try {
+            Date date1;
+            Date date2;
+
+            SimpleDateFormat dates = new SimpleDateFormat("mm/dd/yyyy");
+
+            //Setting dates
+            date1 = dates.parse(formattedDate);
+            date2 = dates.parse(dater);
+
+            //Comparing dates
+            long difference = Math.abs(date1.getTime() - date2.getTime());
+            long differenceDates = difference / (24 * 60 * 60 * 1000);
+
+            //Convert long to String
+            String dayDifference = Long.toString(differenceDates);
+
+            intent.putExtra(EXTRA_EVENT_DIFFERENCE,dayDifference+" days");
+
+        } catch (Exception exception) {
+            intent.putExtra(EXTRA_EVENT_DIFFERENCE,"0 days");
+        }
 
         String message = editText.getText().toString();
         intent.putExtra(EXTRA_EVENT_TITLE, message);
