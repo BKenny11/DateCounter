@@ -34,10 +34,10 @@ public class CUCardAdapter extends RecyclerView.Adapter<CUCardAdapter.ViewHolder
         viewHolder.tvDaysAgo.setText(countup.getDaysAgo());
     }
 
-    public void addItem(String string){
+    public void addItem(String title, String date){
         Countup countup = new Countup();
-        countup.setEvent(string);
-        countup.setDate("August 8");
+        countup.setEvent(title);
+        countup.setDate(date);
         countup.setDaysAgo("55 days ago");
         mCountups.add(countup);
     }

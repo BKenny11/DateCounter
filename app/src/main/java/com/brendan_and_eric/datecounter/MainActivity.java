@@ -125,28 +125,15 @@ public class MainActivity extends AppCompatActivity {
 
             String message = intent.getStringExtra(AddActivity.EXTRA_EVENT_TITLE);
             String type = intent.getStringExtra(AddActivity.EXTRA_EVENT_TYPE);
+            String date = intent.getStringExtra(AddActivity.EXTRA_EVENT_DATE);
 
-            Log.d("LOG",type);
             if (type.contains("false")) {
-//                    String message = intent.getStringExtra(AddActivity.EXTRA_EVENT_TITLE);
-//                    Log.d("LOG",message);
-//                    CDAdapter.addItem(message);
-                CDAdapter.addItem(message);
+                CDAdapter.addItem(message, date);
             }else if (type.contains("true")){
-                CUAdapter.addItem(message);
+                CUAdapter.addItem(message, date);
             }
-            //CDAdapter.addItem(message);
-//                String type = AddActivity.EXTRA_EVENT_TYPE;
-//                if (type == "true") {
-//                    String message = intent.getStringExtra(AddActivity.EXTRA_EVENT_TITLE);
-//                    Log.d("LOG",message);
-//                    CDAdapter.addItem(message);
-//                } else if (type == "false") {
-//                    String message = intent.getStringExtra(AddActivity.EXTRA_EVENT_TITLE);
-//                    Log.d("LOG",message);
-//                    CDAdapter.addItem(message);
-//                }
+          }
 
         }
     }
-}
+

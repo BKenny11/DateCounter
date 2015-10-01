@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,6 +21,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
+
+import java.util.Date;
 
 public class AddActivity extends AppCompatActivity {
 
@@ -78,15 +81,27 @@ public class AddActivity extends AppCompatActivity {
 
 
     public final static String EXTRA_EVENT_TITLE = "com.brenken.myfirstapp.MESSAGE";
-    public final static String EXTRA_EVENT_TYPE = "";
+    public final static String EXTRA_EVENT_TYPE = "com.brenken.myfirstapp.TYPE";
+    public final static String EXTRA_EVENT_DATE = "com.brenken.myfirstapp.DATE";
     public void addItem (View view){
         Intent intent = new Intent(this, MainActivity.class);
         EditText editText = (EditText) findViewById(R.id.editNameText);
         Switch sv1 = (Switch)findViewById(R.id.mySwitch);
         Boolean type = sv1.isChecked();
+
+        DatePicker date = (DatePicker) findViewById(R.id.Date);
+
+        String day = String.valueOf(date.getDayOfMonth());
+        String month = String.valueOf(date.getMonth());
+        String year = String.valueOf(date.getYear());
+
+        String dater = day+"/"+month+"/"+year;
+
+
         String message = editText.getText().toString();
         intent.putExtra(EXTRA_EVENT_TITLE, message);
         intent.putExtra(EXTRA_EVENT_TYPE, type.toString());
+        intent.putExtra(EXTRA_EVENT_DATE, dater);
         startActivity(intent);
 
 
