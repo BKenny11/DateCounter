@@ -9,19 +9,25 @@
                 tools:context="com.brendan_and_eric.datecounter.AboutActivity"
     android:orientation="vertical">
 
+<ScrollView android:layout_width="fill_parent" android:layout_height="wrap_content">
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
     <TextView
         android:text="Date Counter was created by Brendan Kenny and Eric Hunt for an Android Development class at the Rochester Institure of Technology.
         \n \n This app is designed to help its user keep track of different events happening in their life. Users are able to either keep track of the days since an event took place, as well as the number of days until an event occurs."
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textSize="30dp"
-        android:textColor="#222222"/>
+        android:textColor="#222222"
+        android:id="@+id/TextStuff"/>
 
     <Button android:layout_width="fill_parent" android:layout_height="wrap_content"
-        android:text="Done"
-        android:onClick="close"
-        android:textColor="#222222"
+            android:text="Done"
+            android:onClick="close"
+            android:textColor="#222222"
             android:paddingTop="5dp"
+            android:layout_below="@id/TextStuff"
         />
+</RelativeLayout>
+</ScrollView>
 
 </LinearLayout>

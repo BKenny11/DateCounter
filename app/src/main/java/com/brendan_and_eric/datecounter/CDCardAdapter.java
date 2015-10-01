@@ -1,6 +1,7 @@
 package com.brendan_and_eric.datecounter;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,22 +13,11 @@ import java.util.List;
 
 public class CDCardAdapter extends RecyclerView.Adapter<CDCardAdapter.ViewHolder> {
 
-    List<Countdown> mCountdowns;
+    static final List<Countdown> mCountdowns = new ArrayList<Countdown>();
 
     public CDCardAdapter() {
         super();
-        mCountdowns = new ArrayList<>();
-        Countdown countdown = new Countdown();
-        countdown.setEvent("My Birthday!");
-        countdown.setDate("September 15");
-        countdown.setDaysLeft("351 days");
-        mCountdowns.add(countdown);
 
-        countdown = new Countdown();
-        countdown.setEvent("Anniversary <3");
-        countdown.setDate("October 6");
-        countdown.setDaysLeft("7 days");
-        mCountdowns.add(countdown);
     }
 
     @Override
@@ -46,9 +36,23 @@ public class CDCardAdapter extends RecyclerView.Adapter<CDCardAdapter.ViewHolder
         viewHolder.tvDaysLeft.setText(countdown.getDaysLeft());
     }
 
+    public void addItem(String string){
+        Countdown countdown = new Countdown();
+        countdown.setEvent(string);
+        countdown.setDate("September 15");
+        countdown.setDaysLeft("351 days");
+        mCountdowns.add(countdown);
+
+
+    }
+
     @Override
     public int getItemCount() {
         return mCountdowns.size();
+    }
+
+    public List<Countdown> getItems(){
+        return mCountdowns;
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{

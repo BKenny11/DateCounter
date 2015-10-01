@@ -1,5 +1,6 @@
 package com.brendan_and_eric.datecounter;
 
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -9,18 +10,20 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Switch;
 import android.widget.TextView;
-<<<<<<< HEAD
-=======
 
->>>>>>> 0306668a5b879008e223ff10fce0f9d3d6ef194a
+import java.lang.ref.SoftReference;
+import java.util.List;
+
 
 public class MainActivity extends AppCompatActivity {
-
+    CDCardAdapter CDAdapter = new CDCardAdapter();
+    CUCardAdapter CUAdapter = new CUCardAdapter();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.setTabsFromPagerAdapter(pagerAdapter);
         // This method ensures that tab selection events update the ViewPager and page changes update the selected tab.
         tabLayout.setupWithViewPager(viewPager);
+
+
     }
 
     private class MyPagerAdapter extends FragmentStatePagerAdapter {
@@ -111,10 +116,37 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-<<<<<<< HEAD
-}
-=======
 
-}
 
->>>>>>> 0306668a5b879008e223ff10fce0f9d3d6ef194a
+    public void onResume() {
+        super.onResume();
+        Intent intent = getIntent();
+        if (intent.getStringExtra(AddActivity.EXTRA_EVENT_TITLE) != null) {
+
+            String message = intent.getStringExtra(AddActivity.EXTRA_EVENT_TITLE);
+            String type = intent.getStringExtra(AddActivity.EXTRA_EVENT_TYPE);
+
+            Log.d("LOG",type);
+            if (type.contains("false")) {
+//                    String message = intent.getStringExtra(AddActivity.EXTRA_EVENT_TITLE);
+//                    Log.d("LOG",message);
+//                    CDAdapter.addItem(message);
+                CDAdapter.addItem(message);
+            }else if (type.contains("true")){
+                CUAdapter.addItem(message);
+            }
+            //CDAdapter.addItem(message);
+//                String type = AddActivity.EXTRA_EVENT_TYPE;
+//                if (type == "true") {
+//                    String message = intent.getStringExtra(AddActivity.EXTRA_EVENT_TITLE);
+//                    Log.d("LOG",message);
+//                    CDAdapter.addItem(message);
+//                } else if (type == "false") {
+//                    String message = intent.getStringExtra(AddActivity.EXTRA_EVENT_TITLE);
+//                    Log.d("LOG",message);
+//                    CDAdapter.addItem(message);
+//                }
+
+        }
+    }
+}
