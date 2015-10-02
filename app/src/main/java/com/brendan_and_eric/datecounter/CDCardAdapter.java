@@ -12,11 +12,10 @@ import java.util.List;
 
 public class CDCardAdapter extends RecyclerView.Adapter<CDCardAdapter.ViewHolder> {
 
-    List<Countdown> mCountdowns;
+    static final List<Countdown> mCountdowns = new ArrayList<>();
 
     public CDCardAdapter() {
         super();
-        mCountdowns = new ArrayList<>();
         Countdown countdown = new Countdown();
         countdown.setEvent("My Birthday!");
         countdown.setDate("September 15");

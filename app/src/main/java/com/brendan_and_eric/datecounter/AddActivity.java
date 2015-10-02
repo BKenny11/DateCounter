@@ -1,10 +1,7 @@
 package com.brendan_and_eric.datecounter;
 
-<<<<<<< HEAD
 import android.support.v7.app.AppCompatActivity;
 
-=======
->>>>>>> 0306668a5b879008e223ff10fce0f9d3d6ef194a
 import android.support.v7.app.ActionBar;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -20,12 +17,14 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 
 public class AddActivity extends AppCompatActivity {
     private static final String DIALOG_DATE = "DialogDate";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
