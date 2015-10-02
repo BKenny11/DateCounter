@@ -1,5 +1,6 @@
 package com.brendan_and_eric.datecounter;
 
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -16,9 +17,17 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
+<<<<<<< HEAD
+=======
+
+import java.lang.ref.SoftReference;
+import java.util.List;
+>>>>>>> cac8a78a14afd96f467ea1b616c49e339593b9be
+
 
 public class MainActivity extends AppCompatActivity {
-
+    CDCardAdapter CDAdapter = new CDCardAdapter();
+    CUCardAdapter CUAdapter = new CUCardAdapter();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.setTabsFromPagerAdapter(pagerAdapter);
         // This method ensures that tab selection events update the ViewPager and page changes update the selected tab.
         tabLayout.setupWithViewPager(viewPager);
+
+
     }
 
     private class MyPagerAdapter extends FragmentStatePagerAdapter {
@@ -109,4 +120,28 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+<<<<<<< HEAD
 }
+=======
+
+
+    public void onResume() {
+        super.onResume();
+        Intent intent = getIntent();
+        if (intent.getStringExtra(AddActivity.EXTRA_EVENT_TITLE) != null) {
+
+            String message = intent.getStringExtra(AddActivity.EXTRA_EVENT_TITLE);
+            String type = intent.getStringExtra(AddActivity.EXTRA_EVENT_TYPE);
+            String date = intent.getStringExtra(AddActivity.EXTRA_EVENT_DATE);
+            String days = intent.getStringExtra(AddActivity.EXTRA_EVENT_DIFFERENCE);
+            if (type.contains("false")) {
+                CDAdapter.addItem(message, date, days);
+            }else if (type.contains("true")){
+                CUAdapter.addItem(message, date, days);
+            }
+          }
+
+        }
+    }
+
+>>>>>>> cac8a78a14afd96f467ea1b616c49e339593b9be

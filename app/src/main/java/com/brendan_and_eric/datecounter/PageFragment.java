@@ -9,7 +9,11 @@ import android.support.v4.view.GestureDetectorCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+<<<<<<< HEAD
 import android.view.GestureDetector;
+=======
+import android.util.Log;
+>>>>>>> cac8a78a14afd96f467ea1b616c49e339593b9be
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -44,7 +48,7 @@ public class PageFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_page, container, false);
 
@@ -68,12 +72,17 @@ public class PageFragment extends Fragment {
         mAdapter = new CDCardAdapter();
         mRecyclerView.setAdapter(mAdapter);
 
+<<<<<<< HEAD
         Countdown countdown = new Countdown();
         countdown.setEvent("My Day!");
         countdown.setDate("September 15");
         countdown.setDaysLeft("351 days");
         CDCardAdapter.mCountdowns.add(countdown);
+=======
+>>>>>>> cac8a78a14afd96f467ea1b616c49e339593b9be
 
         return view;
     }
+
+
 }

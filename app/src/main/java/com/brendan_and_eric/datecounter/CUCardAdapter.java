@@ -13,22 +13,10 @@ import java.util.List;
 
 public class CUCardAdapter extends RecyclerView.Adapter<CUCardAdapter.ViewHolder> {
 
-    List<Countup> mCountups;
+   static final List<Countup> mCountups = new ArrayList<Countup>();;
 
     public CUCardAdapter() {
         super();
-        mCountups = new ArrayList<>();
-        Countup countup = new Countup();
-        countup.setEvent("Oil Change");
-        countup.setDate("August 8");
-        countup.setDaysAgo("55 days ago");
-        mCountups.add(countup);
-
-        countup = new Countup();
-        countup.setEvent("Haircut");
-        countup.setDate("September 23");
-        countup.setDaysAgo("7 days ago");
-        mCountups.add(countup);
     }
 
     @Override
@@ -45,6 +33,14 @@ public class CUCardAdapter extends RecyclerView.Adapter<CUCardAdapter.ViewHolder
         viewHolder.tvEvent.setText(countup.getEvent());
         viewHolder.tvDate.setText(countup.getDate());
         viewHolder.tvDaysAgo.setText(countup.getDaysAgo());
+    }
+
+    public void addItem(String title, String date, String days){
+        Countup countup = new Countup();
+        countup.setEvent(title);
+        countup.setDate(date);
+        countup.setDaysAgo(days);
+        mCountups.add(countup);
     }
 
     @Override

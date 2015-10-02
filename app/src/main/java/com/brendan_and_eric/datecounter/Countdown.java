@@ -19,6 +19,10 @@ public class Countdown {
         return mDate;
     }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> cac8a78a14afd96f467ea1b616c49e339593b9be
     public void setDate(String date) {
         this.mDate = date;
     }
