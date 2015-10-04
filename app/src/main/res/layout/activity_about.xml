@@ -9,24 +9,9 @@
                 tools:context="com.brendan_and_eric.datecounter.AboutActivity"
     android:orientation="vertical">
 
-<<<<<<< HEAD
-    <ScrollView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/TextStuff"
-            android:text="Date Counter was created by Brendan Kenny and Eric Hunt for an Android Development class at the Rochester Institure of Technology.
-            \n \nThis app is designed to help its user keep track of different events happening in their life. Users are able to either keep track of the days since an event took place, as well as the number of days until an event occurs."
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:textSize="30dp"
-            android:textColor="#222222"/>
 
-        <Button android:layout_width="fill_parent" android:layout_height="wrap_content"
-=======
+
+
 <ScrollView android:layout_width="fill_parent" android:layout_height="wrap_content">
 <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
     <TextView
@@ -39,20 +24,15 @@
         android:id="@+id/TextStuff"/>
 
     <Button android:layout_width="fill_parent" android:layout_height="wrap_content"
->>>>>>> cac8a78a14afd96f467ea1b616c49e339593b9be
+
             android:text="Done"
             android:onClick="close"
             android:textColor="#222222"
             android:paddingTop="5dp"
-<<<<<<< HEAD
+
             android:layout_below="@id/TextStuff"/>
         </RelativeLayout>
     </ScrollView>
-=======
-            android:layout_below="@id/TextStuff"
-        />
-</RelativeLayout>
-</ScrollView>
->>>>>>> cac8a78a14afd96f467ea1b616c49e339593b9be
+
 
 </LinearLayout>
