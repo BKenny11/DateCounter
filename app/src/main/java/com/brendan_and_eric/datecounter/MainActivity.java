@@ -14,11 +14,15 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
+<<<<<<< HEAD
+=======
 
 import java.lang.ref.SoftReference;
 import java.util.List;
+>>>>>>> cac8a78a14afd96f467ea1b616c49e339593b9be
 
 
 public class MainActivity extends AppCompatActivity {
@@ -116,6 +120,9 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+<<<<<<< HEAD
+}
+=======
 
 
     public void onResume() {
@@ -137,3 +144,4 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+>>>>>>> cac8a78a14afd96f467ea1b616c49e339593b9be
