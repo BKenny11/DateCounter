@@ -23,6 +23,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import org.joda.time.DateTime;
+import org.joda.time.Days;
 import org.joda.time.Weeks;
 
 import java.text.SimpleDateFormat;
@@ -118,9 +119,18 @@ public class AddActivity extends AppCompatActivity {
 
             SimpleDateFormat dates = new SimpleDateFormat("mm/dd/yyyy");
 
+
+
+
             //Setting dates
             date1 = dates.parse(formattedDate);
             date2 = dates.parse(dater);
+            DateTime dater1 = new DateTime(formattedDate);
+            DateTime dater2 = new DateTime(date1);
+            Days intt = Days.daysBetween(dater1,dater2);
+            String eya = intt.toString();
+
+            Log.e("Dates Between:", eya);
 
             String Days = getDateDiffString(date1,date2);
             long days = getDifferenceDays(date1, date2);
@@ -138,11 +148,7 @@ public class AddActivity extends AppCompatActivity {
             intent.putExtra(EXTRA_EVENT_DIFFERENCE, "0 days");
         }
 
-       // DateTime dateTime1 = new DateTime(dater);
-        //DateTime dateTime2 = new DateTime(formattedDate);
 
-        //int weeks = Weeks.weeksBetween(dateTime1, dateTime2).getWeeks();
-       // Log.e("NEW DATE COUNTER","Option 2: "+String.valueOf(weeks));
         String message = editText.getText().toString();
         intent.putExtra(EXTRA_EVENT_TITLE, message);
         intent.putExtra(EXTRA_EVENT_TYPE, type.toString());
@@ -167,6 +173,8 @@ public class AddActivity extends AppCompatActivity {
             delta *= -1;
             return "dateTwo is " + delta + " days before dateOne";
         }
+
+
     }
     public static long getDifferenceDays(Date d1, Date d2) {
         long diff = d2.getTime() - d1.getTime();
