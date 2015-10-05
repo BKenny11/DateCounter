@@ -47,6 +47,9 @@ public class CUCardAdapter extends RecyclerView.Adapter<CUCardAdapter.ViewHolder
     public int getItemCount() {
         return mCountups.size();
     }
+    public List<Countup> getItems(){
+        return mCountups;
+    }
 
     class ViewHolder extends RecyclerView.ViewHolder{
 

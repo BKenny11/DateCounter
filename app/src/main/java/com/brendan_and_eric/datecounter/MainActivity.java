@@ -19,17 +19,37 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import java.lang.ref.SoftReference;
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
+
+
     CDCardAdapter CDAdapter = new CDCardAdapter();
     CUCardAdapter CUAdapter = new CUCardAdapter();
+    int mCounter;
+    ArrayList<Countdown> mData = new ArrayList();
+    ArrayList<Countup> mData2 = new ArrayList();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        DataStore dataStore = DataStore.get(this);
+
+        mCounter = dataStore.getNumTimesRun();
+        mCounter++;
+        mData = dataStore.getData();
+        mData2 = dataStore.getData2();
+
+       for(int i = 1; i < mData.size(); i++){
+           CDAdapter.addItem(mData.get(i).getEvent(),mData.get(i).getDate(),mData.get(i).getDaysLeft());
+       }
+
+        for(int i = 1; i < mData2.size(); i++){
+            CUAdapter.addItem(mData2.get(i).getEvent(),mData2.get(i).getDate(),mData2.get(i).getDaysAgo());
+        }
         // Set a toolbar which will replace the action bar.
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -47,7 +67,6 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.setTabsFromPagerAdapter(pagerAdapter);
         // This method ensures that tab selection events update the ViewPager and page changes update the selected tab.
         tabLayout.setupWithViewPager(viewPager);
-
 
     }
 
@@ -119,7 +138,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
+    public void onPause(){
+        super.onPause();
+        DataStore dataStore = DataStore.get(this);
+        dataStore.setNumTimesRun(mCounter);
+        dataStore.commitChanges(this);
+    }
 
 
     public void onResume() {
@@ -133,8 +157,18 @@ public class MainActivity extends AppCompatActivity {
             String days = intent.getStringExtra(AddActivity.EXTRA_EVENT_DIFFERENCE);
             if (type.contains("false")) {
                 CDAdapter.addItem(message, date, days);
+                Countdown countdown = new Countdown();
+                countdown.setDate(date);
+                countdown.setEvent(message);
+                countdown.setDaysLeft(days);
+                mData.add(countdown);
             }else if (type.contains("true")){
                 CUAdapter.addItem(message, date, days);
+                Countup countup = new Countup();
+                countup.setDate(date);
+                countup.setEvent(message);
+                countup.setDaysAgo(days);
+                mData2.add(countup);
             }
           }
 
