@@ -1,7 +1,5 @@
 package com.brendan_and_eric.datecounter;
 
-import java.util.ArrayList;
-
 public class Countdown {
     private String mEvent;
     private String mDate;
