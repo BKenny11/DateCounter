@@ -17,18 +17,53 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0340ce5a777b7009fcb6efbc5fe65aabc90852ed
 import java.lang.ref.SoftReference;
+import java.util.ArrayList;
 import java.util.List;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0340ce5a777b7009fcb6efbc5fe65aabc90852ed
 
 public class MainActivity extends AppCompatActivity {
+
+
     CDCardAdapter CDAdapter = new CDCardAdapter();
     CUCardAdapter CUAdapter = new CUCardAdapter();
+<<<<<<< HEAD
 
+=======
+    int mCounter;
+    ArrayList<Countdown> mData = new ArrayList();
+    ArrayList<Countup> mData2 = new ArrayList();
+>>>>>>> 0340ce5a777b7009fcb6efbc5fe65aabc90852ed
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        DataStore dataStore = DataStore.get(this);
+
+        mCounter = dataStore.getNumTimesRun();
+        mCounter++;
+        mData = dataStore.getData();
+        mData2 = dataStore.getData2();
+
+        if (CDAdapter.getItemCount() ==0) {
+
+            for (int i = 1; i < mData.size(); i++) {
+                CDAdapter.addItem(mData.get(i).getEvent(), mData.get(i).getDate(), mData.get(i).getDaysLeft());
+            }
+        }
+        if (CUAdapter.getItemCount() ==0) {
+            for (int i = 1; i < mData2.size(); i++) {
+                CUAdapter.addItem(mData2.get(i).getEvent(), mData2.get(i).getDate(), mData2.get(i).getDaysAgo());
+            }
+        }
         // Set a toolbar which will replace the action bar.
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -46,7 +81,6 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.setTabsFromPagerAdapter(pagerAdapter);
         // This method ensures that tab selection events update the ViewPager and page changes update the selected tab.
         tabLayout.setupWithViewPager(viewPager);
-
 
     }
 
@@ -116,6 +150,18 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+<<<<<<< HEAD
+=======
+
+
+    public void onPause(){
+        super.onPause();
+        DataStore dataStore = DataStore.get(this);
+        dataStore.setNumTimesRun(mCounter);
+        dataStore.commitChanges(this);
+    }
+
+>>>>>>> 0340ce5a777b7009fcb6efbc5fe65aabc90852ed
 
     public void onResume() {
         super.onResume();
@@ -128,10 +174,24 @@ public class MainActivity extends AppCompatActivity {
             String days = intent.getStringExtra(AddActivity.EXTRA_EVENT_DIFFERENCE);
             if (type.contains("false")) {
                 CDAdapter.addItem(message, date, days);
+                Countdown countdown = new Countdown();
+                countdown.setDate(date);
+                countdown.setEvent(message);
+                countdown.setDaysLeft(days);
+                mData.add(countdown);
             }else if (type.contains("true")){
                 CUAdapter.addItem(message, date, days);
+                Countup countup = new Countup();
+                countup.setDate(date);
+                countup.setEvent(message);
+                countup.setDaysAgo(days);
+                mData2.add(countup);
             }
         }
 
+<<<<<<< HEAD
     }
 }
+=======
+}
+>>>>>>> 0340ce5a777b7009fcb6efbc5fe65aabc90852ed

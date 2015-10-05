@@ -68,7 +68,10 @@ public class PageFragment extends Fragment {
 
         mAdapter = new CDCardAdapter();
         mRecyclerView.setAdapter(mAdapter);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0340ce5a777b7009fcb6efbc5fe65aabc90852ed
         return view;
     }
 

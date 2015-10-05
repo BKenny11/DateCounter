@@ -1,6 +1,10 @@
 package com.brendan_and_eric.datecounter;
 
 import android.support.v7.app.AppCompatActivity;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0340ce5a777b7009fcb6efbc5fe65aabc90852ed
 import android.support.v7.app.ActionBar;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -22,36 +26,42 @@ import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import org.joda.time.DateTime;
+import org.joda.time.Weeks;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 public class AddActivity extends AppCompatActivity {
 
     public String date;
 
+
     private static final String DIALOG_DATE = "DialogDate";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
-        Button mDateButton = (Button)findViewById(R.id.dpResult);
-        mDateButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentManager manager = getFragmentManager();
-                DatePickerFragment dialog = new DatePickerFragment();
-                dialog.show(manager, DIALOG_DATE);
-            }
-        });
-        Spinner spinner = (Spinner) findViewById(R.id.dialog_Notification_picker);
-
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                    R.array.Counter_array, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
+//        Button mDateButton = (Button)findViewById(R.id.dpResult);
+//        mDateButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                FragmentManager manager = getFragmentManager();
+//                DatePickerFragment dialog = new DatePickerFragment();
+//                dialog.show(manager, DIALOG_DATE);
+//            }
+//        });
+//        Spinner spinner = (Spinner) findViewById(R.id.dialog_Notification_picker);
+//
+//        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+//                    R.array.Counter_array, android.R.layout.simple_spinner_item);
+//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        spinner.setAdapter(adapter);
 
 
 
@@ -116,6 +126,9 @@ public class AddActivity extends AppCompatActivity {
             date1 = dates.parse(formattedDate);
             date2 = dates.parse(dater);
 
+            String Days = getDateDiffString(date1,date2);
+            long days = getDifferenceDays(date1, date2);
+
             //Comparing dates
             long difference = Math.abs(date1.getTime() - date2.getTime());
             long differenceDates = difference / (24 * 60 * 60 * 1000);
@@ -126,9 +139,14 @@ public class AddActivity extends AppCompatActivity {
             intent.putExtra(EXTRA_EVENT_DIFFERENCE,dayDifference+" days");
 
         } catch (Exception exception) {
-            intent.putExtra(EXTRA_EVENT_DIFFERENCE,"0 days");
+            intent.putExtra(EXTRA_EVENT_DIFFERENCE, "0 days");
         }
 
+       // DateTime dateTime1 = new DateTime(dater);
+        //DateTime dateTime2 = new DateTime(formattedDate);
+
+        //int weeks = Weeks.weeksBetween(dateTime1, dateTime2).getWeeks();
+       // Log.e("NEW DATE COUNTER","Option 2: "+String.valueOf(weeks));
         String message = editText.getText().toString();
         intent.putExtra(EXTRA_EVENT_TITLE, message);
         intent.putExtra(EXTRA_EVENT_TYPE, type.toString());
@@ -136,5 +154,26 @@ public class AddActivity extends AppCompatActivity {
         startActivity(intent);
 
 
+    }
+
+
+    public String getDateDiffString(Date dateOne, Date dateTwo)
+    {
+        long timeOne = dateOne.getTime();
+        long timeTwo = dateTwo.getTime();
+        long oneDay = 1000 * 60 * 60 * 24;
+        long delta = (timeTwo - timeOne) / oneDay;
+
+        if (delta > 0) {
+            return "dateTwo is " + delta + " days after dateOne";
+        }
+        else {
+            delta *= -1;
+            return "dateTwo is " + delta + " days before dateOne";
+        }
+    }
+    public static long getDifferenceDays(Date d1, Date d2) {
+        long diff = d2.getTime() - d1.getTime();
+        return TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
     }
 }

@@ -52,6 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
+<<<<<<< HEAD
         <DatePicker android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/Date">
@@ -67,6 +68,32 @@
             android:layout_marginTop="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+=======
+    <DatePicker android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/Date"
+        ></DatePicker>
+    <!--<TextView-->
+        <!--android:text="Set Update Notification"-->
+        <!--android:id="@+id/notificationTitle"-->
+        <!--android:layout_marginTop="20dp"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"/>-->
+
+    <!--<Spinner-->
+        <!--android:id="@+id/dialog_Notification_picker"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--/>-->
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/hello_Add"
+        android:layout_alignParentBottom="true"
+        android:onClick="addItem"
+        />
+>>>>>>> 0340ce5a777b7009fcb6efbc5fe65aabc90852ed
 
         <Spinner
             android:id="@+id/dialog_Notification_picker"
