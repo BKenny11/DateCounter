@@ -43,12 +43,16 @@ public class MainActivity extends AppCompatActivity {
         mData = dataStore.getData();
         mData2 = dataStore.getData2();
 
-       for(int i = 1; i < mData.size(); i++){
-           CDAdapter.addItem(mData.get(i).getEvent(),mData.get(i).getDate(),mData.get(i).getDaysLeft());
-       }
+        if (CDAdapter.getItemCount() ==0) {
 
-        for(int i = 1; i < mData2.size(); i++){
-            CUAdapter.addItem(mData2.get(i).getEvent(),mData2.get(i).getDate(),mData2.get(i).getDaysAgo());
+            for (int i = 1; i < mData.size(); i++) {
+                CDAdapter.addItem(mData.get(i).getEvent(), mData.get(i).getDate(), mData.get(i).getDaysLeft());
+            }
+        }
+        if (CUAdapter.getItemCount() ==0) {
+            for (int i = 1; i < mData2.size(); i++) {
+                CUAdapter.addItem(mData2.get(i).getEvent(), mData2.get(i).getDate(), mData2.get(i).getDaysAgo());
+            }
         }
         // Set a toolbar which will replace the action bar.
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

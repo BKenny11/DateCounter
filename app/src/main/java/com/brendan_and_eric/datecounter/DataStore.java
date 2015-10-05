@@ -75,7 +75,7 @@ public class DataStore {
         Gson gson = new GsonBuilder().create();
         String arrayListToJson = gson.toJson(mData);
         String arrayListToJson2 = gson.toJson(mData2);
-        
+
         editor.putString(KEY_ITEMS_STRING, arrayListToJson);
         editor.putString(KEY_ITEMS_STRING2, arrayListToJson2);
 
