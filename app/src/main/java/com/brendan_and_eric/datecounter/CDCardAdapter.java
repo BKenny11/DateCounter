@@ -13,19 +13,11 @@ import java.util.List;
 
 public class CDCardAdapter extends RecyclerView.Adapter<CDCardAdapter.ViewHolder> {
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 0340ce5a777b7009fcb6efbc5fe65aabc90852ed
     static final List<Countdown> mCountdowns = new ArrayList<Countdown>();
 
     public CDCardAdapter() {
         super();
-<<<<<<< HEAD
     }
-=======
-
->>>>>>> 0340ce5a777b7009fcb6efbc5fe65aabc90852ed
 
     public void delete(int position){
         mCountdowns.remove(position);

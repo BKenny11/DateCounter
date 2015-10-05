@@ -19,10 +19,6 @@
     </style>
 
     <style name="MyCustomTabLayout" parent="Widget.Design.TabLayout">
-<<<<<<< HEAD
-=======
-
->>>>>>> 0340ce5a777b7009fcb6efbc5fe65aabc90852ed
         <item name="tabIndicatorColor">#4D8DB7</item>
         <item name="tabBackground">@android:color/darker_gray</item>
         <item name="tabTextAppearance">@android:color/white</item>
