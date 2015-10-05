@@ -17,4 +17,8 @@
     <string name="title_activity_popup">PopupActivity</string>
     <string name="popup_text">Choose an option:</string>
     <string name="title_activity_dummy">DummyActivity</string>
+    <string name="add_event">Click the plus icon to add an event</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="cancel">Cancel</string>
 </resources>

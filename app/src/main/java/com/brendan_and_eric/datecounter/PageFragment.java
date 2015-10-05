@@ -9,11 +9,8 @@ import android.support.v4.view.GestureDetectorCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-<<<<<<< HEAD
 import android.view.GestureDetector;
-=======
 import android.util.Log;
->>>>>>> cac8a78a14afd96f467ea1b616c49e339593b9be
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -29,9 +26,9 @@ import java.util.List;
 
 public class PageFragment extends Fragment {
 
-    RecyclerView mRecyclerView;
+    static RecyclerView mRecyclerView;
     RecyclerView.LayoutManager mLayoutManager;
-    RecyclerView.Adapter mAdapter;
+    static RecyclerView.Adapter mAdapter;
 
     public static PageFragment newInstance() {
         return new PageFragment();
@@ -71,15 +68,6 @@ public class PageFragment extends Fragment {
 
         mAdapter = new CDCardAdapter();
         mRecyclerView.setAdapter(mAdapter);
-
-<<<<<<< HEAD
-        Countdown countdown = new Countdown();
-        countdown.setEvent("My Day!");
-        countdown.setDate("September 15");
-        countdown.setDaysLeft("351 days");
-        CDCardAdapter.mCountdowns.add(countdown);
-=======
->>>>>>> cac8a78a14afd96f467ea1b616c49e339593b9be
 
         return view;
     }

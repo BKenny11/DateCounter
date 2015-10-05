@@ -13,23 +13,15 @@ import java.util.List;
 
 public class CDCardAdapter extends RecyclerView.Adapter<CDCardAdapter.ViewHolder> {
 
-<<<<<<< HEAD
-    static final List<Countdown> mCountdowns = new ArrayList<>();
-
-    public CDCardAdapter() {
-        super();
-        Countdown countdown = new Countdown();
-        countdown.setEvent("My Birthday!");
-        countdown.setDate("September 15");
-        countdown.setDaysLeft("351 days");
-        mCountdowns.add(countdown);
-=======
     static final List<Countdown> mCountdowns = new ArrayList<Countdown>();
 
     public CDCardAdapter() {
         super();
->>>>>>> cac8a78a14afd96f467ea1b616c49e339593b9be
+    }
 
+    public void delete(int position){
+        mCountdowns.remove(position);
+        notifyItemRemoved(position);
     }
 
     @Override

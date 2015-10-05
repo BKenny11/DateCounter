@@ -17,17 +17,13 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
-<<<<<<< HEAD
-=======
-
 import java.lang.ref.SoftReference;
 import java.util.List;
->>>>>>> cac8a78a14afd96f467ea1b616c49e339593b9be
-
 
 public class MainActivity extends AppCompatActivity {
     CDCardAdapter CDAdapter = new CDCardAdapter();
     CUCardAdapter CUAdapter = new CUCardAdapter();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -120,10 +116,6 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-<<<<<<< HEAD
-}
-=======
-
 
     public void onResume() {
         super.onResume();
@@ -139,9 +131,7 @@ public class MainActivity extends AppCompatActivity {
             }else if (type.contains("true")){
                 CUAdapter.addItem(message, date, days);
             }
-          }
-
         }
-    }
 
->>>>>>> cac8a78a14afd96f467ea1b616c49e339593b9be
+    }
+}
