@@ -13,20 +13,29 @@
         android:layout_height="wrap_content">
         <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            >
+            <ImageView android:layout_width="fill_parent" android:layout_height="wrap_content"
+                       android:src="@drawable/logo"
+                       android:paddingTop="20dp"
+                       />
         <TextView
             android:id="@+id/TextStuff"
-            android:text="Date Counter was created by Brendan Kenny and Eric Hunt for an Android Development class at the Rochester Institure of Technology.
-            \n \nThis app is designed to help its user keep track of different events happening in their life. Users are able to either keep track of the days since an event took place, as well as the number of days until an event occurs."
+            android:text="CountaDay was created by Brendan Kenny and Eric Hunt for an Android Development class at the Rochester Institute of Technology.
+            \n \nThis app is designed to help its user keep track of different events happening in their life. Users are able to either keep track of the days since an event took place, as well as the number of days until an event occurs.
+            \n \nPlease enjoy our app!"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:textSize="30dp"
-            android:textColor="#222222"/>
+            android:textColor="#222222"
+            android:paddingTop="320dp"
+            android:gravity="center"/>
 
         <Button android:layout_width="fill_parent" android:layout_height="wrap_content"
             android:layout_below="@id/TextStuff"
             android:text="Close"
-            android:onClick="close"/>
+            android:onClick="close"
+            android:layout_marginTop="30dp"/>
         </RelativeLayout>
     </ScrollView>
 
