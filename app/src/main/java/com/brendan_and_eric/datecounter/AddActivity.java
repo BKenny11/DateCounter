@@ -104,49 +104,24 @@ public class AddActivity extends AppCompatActivity {
         DatePicker date = (DatePicker) findViewById(R.id.Date);
 
         Date now = Calendar.getInstance().getTime();
-        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy", Locale.US);
-        String formattedDate = formatter.format(now);
+        SimpleDateFormat formatter = new SimpleDateFormat("MM.dd.yyyy", Locale.US);
+        //String formattedDate = formatter.format(now);
 
         String day = String.valueOf(date.getDayOfMonth());
         String month = String.valueOf(date.getMonth());
         String year = String.valueOf(date.getYear());
 
-        String dater = month+"/"+day+"/"+year;
+        String dater = year+"."+month+"."+day;
+        //SimpleDateFormat dates = new SimpleDateFormat("MMddyyyy");
 
-        try {
-            Date date1;
-            Date date2;
+        Date date2 = getDateFromDatePicker(date);
 
-            SimpleDateFormat dates = new SimpleDateFormat("mm/dd/yyyy");
+        DateTime dater1 = new DateTime(now);
+        DateTime dater2 = new DateTime(date2);
+        int intt = Math.abs(Days.daysBetween(dater1,dater2).getDays());
+        String eya = String.valueOf(intt);
 
-
-
-
-            //Setting dates
-            date1 = dates.parse(formattedDate);
-            date2 = dates.parse(dater);
-            DateTime dater1 = new DateTime(formattedDate);
-            DateTime dater2 = new DateTime(date1);
-            Days intt = Days.daysBetween(dater1,dater2);
-            String eya = intt.toString();
-
-            Log.e("Dates Between:", eya);
-
-            String Days = getDateDiffString(date1,date2);
-            long days = getDifferenceDays(date1, date2);
-
-            //Comparing dates
-            long difference = Math.abs(date1.getTime() - date2.getTime());
-            long differenceDates = difference / (24 * 60 * 60 * 1000);
-
-            //Convert long to String
-            String dayDifference = Long.toString(differenceDates);
-
-            intent.putExtra(EXTRA_EVENT_DIFFERENCE,dayDifference+" days");
-
-        } catch (Exception exception) {
-            intent.putExtra(EXTRA_EVENT_DIFFERENCE, "0 days");
-        }
+        intent.putExtra(EXTRA_EVENT_DIFFERENCE,eya+" days");
 
 
         String message = editText.getText().toString();
@@ -158,26 +133,14 @@ public class AddActivity extends AppCompatActivity {
 
     }
 
+    public static java.util.Date getDateFromDatePicker(DatePicker datePicker){
+        int day = datePicker.getDayOfMonth();
+        int month = datePicker.getMonth();
+        int year =  datePicker.getYear();
 
-    public String getDateDiffString(Date dateOne, Date dateTwo)
-    {
-        long timeOne = dateOne.getTime();
-        long timeTwo = dateTwo.getTime();
-        long oneDay = 1000 * 60 * 60 * 24;
-        long delta = (timeTwo - timeOne) / oneDay;
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(year, month, day);
 
-        if (delta > 0) {
-            return "dateTwo is " + delta + " days after dateOne";
-        }
-        else {
-            delta *= -1;
-            return "dateTwo is " + delta + " days before dateOne";
-        }
-
-
-    }
-    public static long getDifferenceDays(Date d1, Date d2) {
-        long diff = d2.getTime() - d1.getTime();
-        return TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+        return calendar.getTime();
     }
 }
