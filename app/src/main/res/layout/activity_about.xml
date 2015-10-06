@@ -24,7 +24,9 @@
             android:textColor="#222222"/>
 
         <Button android:layout_width="fill_parent" android:layout_height="wrap_content"
-            android:layout_below="@id/TextStuff"/>
+            android:layout_below="@id/TextStuff"
+            android:text="Close"
+            android:onClick="close"/>
         </RelativeLayout>
     </ScrollView>
 

@@ -20,8 +20,11 @@ import android.widget.TextView;
 import java.lang.ref.SoftReference;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 
 public class MainActivity extends AppCompatActivity {
+
 
 
     CDCardAdapter CDAdapter = new CDCardAdapter();
@@ -72,6 +75,30 @@ public class MainActivity extends AppCompatActivity {
         // This method ensures that tab selection events update the ViewPager and page changes update the selected tab.
         tabLayout.setupWithViewPager(viewPager);
 
+
+
+        Thread t = new Thread() {
+            @Override
+            public void run() {
+                while(true) {
+                    try {
+                        Thread.sleep(1000*60*60*24);
+                        for(int i = 1; i < mData.size(); i++){
+                            int NewDays = Integer.valueOf(mData.get(i).getDaysLeft());
+                            NewDays--;
+                            mData.get(i).setDaysLeft(String.valueOf(NewDays));
+                        }
+                        for(int i = 1; i < mData2.size(); i++){
+                            int NewDays = Integer.valueOf(mData2.get(i).getDaysAgo());
+                            NewDays++;
+                            mData2.get(i).setDaysAgo(String.valueOf(NewDays));
+                        }
+                    } catch (InterruptedException ie) {
+                    }
+                }
+            }
+        };
+        t.start();
     }
 
     private class MyPagerAdapter extends FragmentStatePagerAdapter {

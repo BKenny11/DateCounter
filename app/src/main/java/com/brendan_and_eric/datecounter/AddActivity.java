@@ -111,17 +111,15 @@ public class AddActivity extends AppCompatActivity {
         String month = String.valueOf(date.getMonth());
         String year = String.valueOf(date.getYear());
 
-        String dater = year+"."+month+"."+day;
-        //SimpleDateFormat dates = new SimpleDateFormat("MMddyyyy");
-
+        String dater = day+"/"+month+"/"+year;
         Date date2 = getDateFromDatePicker(date);
 
         DateTime dater1 = new DateTime(now);
         DateTime dater2 = new DateTime(date2);
-        int intt = Math.abs(Days.daysBetween(dater1,dater2).getDays());
-        String eya = String.valueOf(intt);
+        int DaysBetween = Math.abs(Days.daysBetween(dater1,dater2).getDays());
+        String DaysBetweenString = String.valueOf(DaysBetween);
 
-        intent.putExtra(EXTRA_EVENT_DIFFERENCE,eya+" days");
+        intent.putExtra(EXTRA_EVENT_DIFFERENCE,DaysBetweenString);
 
 
         String message = editText.getText().toString();
