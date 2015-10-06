@@ -1,6 +1,5 @@
 package com.brendan_and_eric.datecounter;
 
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -10,18 +9,10 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.RelativeLayout;
-import android.widget.Switch;
-import android.widget.TextView;
-import java.lang.ref.SoftReference;
+
 import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -43,8 +34,8 @@ public class MainActivity extends AppCompatActivity {
 
         mCounter = dataStore.getNumTimesRun();
         mCounter++;
-        mData = dataStore.getData();
-        mData2 = dataStore.getData2();
+        mData = dataStore.getCountdowns();
+        mData2 = dataStore.getCountups();
 
         if (CDAdapter.getItemCount() ==0) {
 

@@ -21,9 +21,7 @@
                        />
         <TextView
             android:id="@+id/TextStuff"
-            android:text="CountaDay was created by Brendan Kenny and Eric Hunt for an Android Development class at the Rochester Institute of Technology.
-            \n \nThis app is designed to help its user keep track of different events happening in their life. Users are able to either keep track of the days since an event took place, as well as the number of days until an event occurs.
-            \n \nPlease enjoy our app!"
+            android:text="@string/about_text"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:textSize="30dp"
@@ -33,7 +31,7 @@
 
         <Button android:layout_width="fill_parent" android:layout_height="wrap_content"
             android:layout_below="@id/TextStuff"
-            android:text="Close"
+            android:text="@string/close"
             android:onClick="close"
             android:layout_marginTop="30dp"/>
         </RelativeLayout>

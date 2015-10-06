@@ -2,7 +2,6 @@ package com.brendan_and_eric.datecounter;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -15,10 +14,10 @@ import java.util.ArrayList;
  */
 public class DataStore {
     private static DataStore sDataStore;
-    private ArrayList<Countdown> mData;
-    private ArrayList<Countup> mData2;
-    public static final String KEY_ITEMS_STRING = "ITEMS_STRING";
-    public static final String KEY_ITEMS_STRING2 = "ITEMS_STRING2";
+    private ArrayList<Countdown> mCountdowns;
+    private ArrayList<Countup> mCountups;
+    public static final String KEY_COUNTDOWN_STRING = "ITEMS_STRING_COUNTDOWNS";
+    public static final String KEY_COUNTUP_STRING = "ITEMS_STRING_COUNTUPS";
     public static final String PREFS_NAME = "DATA_STORE_PREFERENCES";
     public static final String KEY_NUM_TIMES_RUN = "NUM_TIMES_RUN";
 
@@ -34,18 +33,18 @@ public class DataStore {
     private DataStore(Context context){
         SharedPreferences pref = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
 
-        mData = new ArrayList<Countdown>();
-        mData2 = new ArrayList<Countup>();
+        mCountdowns = new ArrayList<Countdown>();
+        mCountups = new ArrayList<Countup>();
         mNumTimesRun = pref.getInt(KEY_NUM_TIMES_RUN, 0);
 
 
-        String arrayListAsJson = pref.getString(KEY_ITEMS_STRING, "[{text:\"Use this app!\",formattedDate:\"1/1/2015\", completed:true}]");
-        String arrayListAsJson2 = pref.getString(KEY_ITEMS_STRING2, "[{text:\"Use this app!\",formattedDate:\"1/1/2015\", completed:true}]");
+        String arrayListAsJson = pref.getString(KEY_COUNTDOWN_STRING, "[{text:\"Event\",Date:\"1/1/2015\", Days: 0}]");
+        String arrayListAsJson2 = pref.getString(KEY_COUNTUP_STRING, "[{text:\"Event\",Date:\"1/1/2015\", Days: 0}]");
         Gson gson = new Gson();
-        mData = gson.fromJson(arrayListAsJson, new TypeToken<ArrayList<Countdown>>() {
+        mCountdowns = gson.fromJson(arrayListAsJson, new TypeToken<ArrayList<Countdown>>() {
         }.getType());
 
-        mData2 = gson.fromJson(arrayListAsJson2, new TypeToken<ArrayList<Countup>>() {
+        mCountups = gson.fromJson(arrayListAsJson2, new TypeToken<ArrayList<Countup>>() {
         }.getType());
 
     }
@@ -58,12 +57,12 @@ public class DataStore {
         mNumTimesRun = numTimesRun;
     }
 
-    public ArrayList<Countdown> getData() {
-        return mData;
+    public ArrayList<Countdown> getCountdowns() {
+        return mCountdowns;
     }
 
-    public ArrayList<Countup> getData2() {
-        return mData2;
+    public ArrayList<Countup> getCountups() {
+        return mCountups;
     }
 
     public boolean commitChanges(Context context){
@@ -73,11 +72,11 @@ public class DataStore {
         editor.putInt(KEY_NUM_TIMES_RUN, mNumTimesRun);
 
         Gson gson = new GsonBuilder().create();
-        String arrayListToJson = gson.toJson(mData);
-        String arrayListToJson2 = gson.toJson(mData2);
+        String arrayListCountdownsToJson = gson.toJson(mCountdowns);
+        String arrayListCountupsToJson = gson.toJson(mCountups);
 
-        editor.putString(KEY_ITEMS_STRING, arrayListToJson);
-        editor.putString(KEY_ITEMS_STRING2, arrayListToJson2);
+        editor.putString(KEY_COUNTDOWN_STRING, arrayListCountdownsToJson);
+        editor.putString(KEY_COUNTUP_STRING, arrayListCountupsToJson);
 
         boolean success = editor.commit();
 

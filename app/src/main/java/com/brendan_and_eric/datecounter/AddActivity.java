@@ -34,37 +34,11 @@ import java.util.concurrent.TimeUnit;
 
 public class AddActivity extends AppCompatActivity {
 
-    public String date;
-
-
-    private static final String DIALOG_DATE = "DialogDate";
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
-//        Button mDateButton = (Button)findViewById(R.id.dpResult);
-//        mDateButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                FragmentManager manager = getFragmentManager();
-//                DatePickerFragment dialog = new DatePickerFragment();
-//                dialog.show(manager, DIALOG_DATE);
-//            }
-//        });
-//        Spinner spinner = (Spinner) findViewById(R.id.dialog_Notification_picker);
-//
-//        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-//                    R.array.Counter_array, android.R.layout.simple_spinner_item);
-//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        spinner.setAdapter(adapter);
-
-
-
     }
-
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -73,7 +47,6 @@ public class AddActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
@@ -90,11 +63,11 @@ public class AddActivity extends AppCompatActivity {
         }
     }
 
-
     public final static String EXTRA_EVENT_TITLE = "com.brenken.myfirstapp.MESSAGE";
     public final static String EXTRA_EVENT_TYPE = "com.brenken.myfirstapp.TYPE";
     public final static String EXTRA_EVENT_DATE = "com.brenken.myfirstapp.DATE";
     public final static String EXTRA_EVENT_DIFFERENCE = "com.brenken.myfirstapp.DIFFERENCE";
+
     public void addItem (View view){
         Intent intent = new Intent(this, MainActivity.class);
         EditText editText = (EditText) findViewById(R.id.editNameText);
@@ -104,8 +77,6 @@ public class AddActivity extends AppCompatActivity {
         DatePicker date = (DatePicker) findViewById(R.id.Date);
 
         Date now = Calendar.getInstance().getTime();
-        SimpleDateFormat formatter = new SimpleDateFormat("MM.dd.yyyy", Locale.US);
-        //String formattedDate = formatter.format(now);
 
         String day = String.valueOf(date.getDayOfMonth());
         String month = String.valueOf(date.getMonth());
@@ -121,14 +92,11 @@ public class AddActivity extends AppCompatActivity {
 
         intent.putExtra(EXTRA_EVENT_DIFFERENCE,DaysBetweenString);
 
-
         String message = editText.getText().toString();
         intent.putExtra(EXTRA_EVENT_TITLE, message);
         intent.putExtra(EXTRA_EVENT_TYPE, type.toString());
         intent.putExtra(EXTRA_EVENT_DATE, dater);
         startActivity(intent);
-
-
     }
 
     public static java.util.Date getDateFromDatePicker(DatePicker datePicker){
