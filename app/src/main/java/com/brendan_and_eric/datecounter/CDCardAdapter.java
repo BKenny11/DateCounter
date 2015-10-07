@@ -13,23 +13,14 @@ import java.util.List;
 
 public class CDCardAdapter extends RecyclerView.Adapter<CDCardAdapter.ViewHolder> {
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 0340ce5a777b7009fcb6efbc5fe65aabc90852ed
     static final List<Countdown> mCountdowns = new ArrayList<Countdown>();
+
+    public static TextView tvEvent;
+    public static TextView tvDate;
+    public static TextView tvDaysLeft;
 
     public CDCardAdapter() {
         super();
-<<<<<<< HEAD
-    }
-=======
-
->>>>>>> 0340ce5a777b7009fcb6efbc5fe65aabc90852ed
-
-    public void delete(int position){
-        mCountdowns.remove(position);
-        notifyItemRemoved(position);
     }
 
     @Override
@@ -43,9 +34,9 @@ public class CDCardAdapter extends RecyclerView.Adapter<CDCardAdapter.ViewHolder
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
         Countdown countdown = mCountdowns.get(i);
-        viewHolder.tvEvent.setText(countdown.getEvent());
-        viewHolder.tvDate.setText(countdown.getDate());
-        viewHolder.tvDaysLeft.setText(countdown.getDaysLeft());
+        tvEvent.setText(countdown.getEvent());
+        tvDate.setText(countdown.getDate());
+        tvDaysLeft.setText(countdown.getDaysLeft());
     }
 
     public void addItem(String title, String date, String days){
@@ -54,8 +45,6 @@ public class CDCardAdapter extends RecyclerView.Adapter<CDCardAdapter.ViewHolder
         countdown.setDate(date);
         countdown.setDaysLeft(days);
         mCountdowns.add(countdown);
-
-
     }
 
     @Override
@@ -68,10 +57,6 @@ public class CDCardAdapter extends RecyclerView.Adapter<CDCardAdapter.ViewHolder
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{
-
-        public TextView tvEvent;
-        public TextView tvDate;
-        public TextView tvDaysLeft;
 
         public ViewHolder(View itemView) {
             super(itemView);

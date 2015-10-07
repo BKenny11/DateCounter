@@ -14,14 +14,17 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             app:layout_scrollFlags="scroll|enterAlways"
-            app:titleTextAppearance="@style/ToolBarText"/>
+            app:titleTextAppearance="@style/ToolBarTextTablet"/>
 
         <android.support.design.widget.TabLayout
             android:id="@+id/tab_layout"
-            style="@style/MyCustomTabLayout"
-            android:layout_width="fill_parent"
+            style="@style/MyCustomTabLayoutTablet"
+            app:layout_scrollFlags="scroll|enterAlways"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_scrollFlags="scroll|enterAlways" />
+            app:tabMaxWidth="0dp"
+            app:tabGravity="fill"
+            app:tabMode="fixed" />
 
     </android.support.design.widget.AppBarLayout>
 

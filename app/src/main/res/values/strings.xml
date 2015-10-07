@@ -5,7 +5,10 @@
     <string name="action_settings">About</string>
     <string name="title_activity_add">Add Event</string>
     <string name="hello_Add">Add Date!</string>
+    <string name="add_edit">Update Event</string>
     <string name="counterSetting">Countdown</string>
+    <string name="countdownSetting">Countdown</string>
+    <string name="countupSetting">Countup</string>
     <string name="date_picker_title">Date of Event:</string>
     <string-array name="Counter_array">
         <item>Daily</item>
@@ -17,8 +20,9 @@
     <string name="title_activity_popup">PopupActivity</string>
     <string name="popup_text">Choose an option:</string>
     <string name="title_activity_dummy">DummyActivity</string>
-    <string name="add_event">Click the plus icon to add an event</string>
+    <string name="add_event">Click the \'plus\' icon to add an event</string>
     <string name="edit">Edit</string>
+    <string name="edit_text">Edit Event:</string>
     <string name="delete">Delete</string>
     <string name="cancel">Cancel</string>
 </resources>

@@ -15,7 +15,9 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,6 +31,9 @@ public class PageFragment extends Fragment {
     static RecyclerView mRecyclerView;
     RecyclerView.LayoutManager mLayoutManager;
     static RecyclerView.Adapter mAdapter;
+    List<Countdown> mCountdownsData = new ArrayList<Countdown>();
+    List<Countdown> mCountdowns = new ArrayList<Countdown>();
+    //public final static String EXTRA_EVENT_POS = "com.brenken.myfirstapp.POS";
 
     public static PageFragment newInstance() {
         return new PageFragment();
@@ -49,6 +54,11 @@ public class PageFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_page, container, false);
 
+        DataStore dataStore = DataStore.get(getContext());
+        mCountdownsData = dataStore.getData();
+
+        mCountdowns = CDCardAdapter.mCountdowns;
+
         mRecyclerView = (RecyclerView) view.findViewById(R.id.cd_rv);
         mRecyclerView.setHasFixedSize(true);
 
@@ -57,23 +67,31 @@ public class PageFragment extends Fragment {
         mRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity(), mRecyclerView, new RecyclerTouchListener.ClickListener() {
             @Override
             public void onClick(View view, int position) {
-                //Toast.makeText(getActivity(), "onClick " + position, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), PopupActivity.class);
+                int pos = position;
+                intent.putExtra("pos", pos);
+                Countdown countdown = CDCardAdapter.mCountdowns.get(pos);
+                String event = countdown.getEvent();
+                intent.putExtra("event", event);
+                intent.putExtra("isCountup", false);
+                startActivity(intent);
             }
 
             @Override
             public void onLongClick(View view, int position) {
-                startActivity(new Intent(getActivity(), PopupActivity.class));
+                deleteItem(mCountdowns, position);
+                deleteItem(mCountdownsData, position);
             }
         }));
 
         mAdapter = new CDCardAdapter();
         mRecyclerView.setAdapter(mAdapter);
-<<<<<<< HEAD
 
-=======
->>>>>>> 0340ce5a777b7009fcb6efbc5fe65aabc90852ed
         return view;
     }
 
-
+    public void deleteItem(List<Countdown> array, int position){
+        array.remove(position);
+        mAdapter.notifyItemRangeRemoved(0, array.size());
+    }
 }

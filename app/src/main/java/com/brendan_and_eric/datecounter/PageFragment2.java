@@ -23,7 +23,9 @@ public class PageFragment2 extends Fragment {
 
     RecyclerView mRecyclerView;
     RecyclerView.LayoutManager mLayoutManager;
-    RecyclerView.Adapter mAdapter;
+    public static RecyclerView.Adapter mAdapter;
+    List<Countup> mCountupsData = new ArrayList<Countup>();
+    List<Countup> mCountups = new ArrayList<Countup>();
 
     PopupWindow popUp;
 
@@ -46,6 +48,11 @@ public class PageFragment2 extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_page2, container, false);
 
+        DataStore dataStore = DataStore.get(getContext());
+        mCountupsData = dataStore.getData2();
+
+        mCountups = CUCardAdapter.mCountups;
+
         mRecyclerView = (RecyclerView) view.findViewById(R.id.cu_rv);
         mRecyclerView.setHasFixedSize(true);
 
@@ -54,12 +61,20 @@ public class PageFragment2 extends Fragment {
         mRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity(), mRecyclerView, new RecyclerTouchListener.ClickListener() {
             @Override
             public void onClick(View view, int position) {
-                //Toast.makeText(getActivity(), "onClick " + position, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), PopupActivity.class);
+                int pos = position;
+                intent.putExtra("pos", pos);
+                Countup countup = CUCardAdapter.mCountups.get(pos);
+                String event = countup.getEvent();
+                intent.putExtra("event", event);
+                intent.putExtra("isCountup", true);
+                startActivity(intent);
             }
 
             @Override
             public void onLongClick(View view, int position) {
-                startActivity(new Intent(getActivity(), PopupActivity.class));
+                deleteItem(mCountups, position);
+                deleteItem(mCountupsData, position);
             }
         }));
 
@@ -67,5 +82,10 @@ public class PageFragment2 extends Fragment {
         mRecyclerView.setAdapter(mAdapter);
 
         return view;
+    }
+
+    public void deleteItem(List<Countup> array, int position){
+        array.remove(position);
+        mAdapter.notifyItemRangeRemoved(0, array.size());
     }
 }

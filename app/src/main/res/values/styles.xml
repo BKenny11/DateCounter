@@ -12,6 +12,11 @@
         <item name="android:textColor">@android:color/white</item>
     </style>
 
+    <style name="ToolBarTextTablet" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+
     <style name="AddTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">#4D8DB7</item>
@@ -19,19 +24,26 @@
     </style>
 
     <style name="MyCustomTabLayout" parent="Widget.Design.TabLayout">
-<<<<<<< HEAD
-=======
-
->>>>>>> 0340ce5a777b7009fcb6efbc5fe65aabc90852ed
         <item name="tabIndicatorColor">#4D8DB7</item>
         <item name="tabBackground">@android:color/darker_gray</item>
         <item name="tabTextAppearance">@android:color/white</item>
         <item name="tabSelectedTextColor">@android:color/white</item>
     </style>
 
+    <style name="MyCustomTabLayoutTablet" parent="Widget.Design.TabLayout">
+        <item name="tabIndicatorColor">#4D8DB7</item>
+        <item name="tabBackground">@android:color/darker_gray</item>
+        <item name="tabTextAppearance">@style/TabLayoutTextAppearance</item>
+        <item name="tabSelectedTextColor">@android:color/white</item>
+    </style>
+
+    <style name="TabLayoutTextAppearance" parent="TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
     <style name="AppTheme.Popup">
         <item name="android:windowIsTranslucent">true</item>
-        <item name="android:windowCloseOnTouchOutside">true</item>
     </style>
 
 </resources>

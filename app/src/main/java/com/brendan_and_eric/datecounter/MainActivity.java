@@ -17,30 +17,19 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
-<<<<<<< HEAD
-=======
-
->>>>>>> 0340ce5a777b7009fcb6efbc5fe65aabc90852ed
 import java.lang.ref.SoftReference;
 import java.util.ArrayList;
 import java.util.List;
-<<<<<<< HEAD
-=======
-
->>>>>>> 0340ce5a777b7009fcb6efbc5fe65aabc90852ed
 
 public class MainActivity extends AppCompatActivity {
 
+    public static CDCardAdapter CDAdapter = new CDCardAdapter();
+    public static CUCardAdapter CUAdapter = new CUCardAdapter();
 
-    CDCardAdapter CDAdapter = new CDCardAdapter();
-    CUCardAdapter CUAdapter = new CUCardAdapter();
-<<<<<<< HEAD
-
-=======
     int mCounter;
-    ArrayList<Countdown> mData = new ArrayList();
-    ArrayList<Countup> mData2 = new ArrayList();
->>>>>>> 0340ce5a777b7009fcb6efbc5fe65aabc90852ed
+    public static ArrayList<Countdown> mData = new ArrayList<>();
+    public static ArrayList<Countup> mData2 = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
         // Set a toolbar which will replace the action bar.
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setTitleTextAppearance(this, R.style.ToolBarText);
 
         // Setup the viewPager
         ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
@@ -150,9 +138,6 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-<<<<<<< HEAD
-=======
-
 
     public void onPause(){
         super.onPause();
@@ -160,8 +145,6 @@ public class MainActivity extends AppCompatActivity {
         dataStore.setNumTimesRun(mCounter);
         dataStore.commitChanges(this);
     }
-
->>>>>>> 0340ce5a777b7009fcb6efbc5fe65aabc90852ed
 
     public void onResume() {
         super.onResume();
@@ -188,10 +171,6 @@ public class MainActivity extends AppCompatActivity {
                 mData2.add(countup);
             }
         }
-
-<<<<<<< HEAD
     }
 }
-=======
-}
->>>>>>> 0340ce5a777b7009fcb6efbc5fe65aabc90852ed
+
