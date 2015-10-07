@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <resources>
     <string name="app_name">Date Counter</string>
 
@@ -26,3 +27,27 @@
     <string name="delete">Delete</string>
     <string name="cancel">Cancel</string>
 </resources>
+=======
+<resources>
+    <string name="app_name">CountaDay</string>
+
+    <string name="hello_world">Countdown / Countup</string>
+    <string name="action_settings">About</string>
+    <string name="title_activity_add">Add Event</string>
+    <string name="hello_Add">Add Date!</string>
+    <string name="counterSetting">Countdown</string>
+    <string name="date_picker_title">Date of Event:</string>
+    <string name="title_activity_about">About This App</string>
+    <string name="title_activity_popup">PopupActivity</string>
+    <string name="popup_text">Choose an option:</string>
+    <string name="title_activity_dummy">DummyActivity</string>
+    <string name="add_event">Click the plus icon to add an event</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="cancel">Cancel</string>
+    <string name="close">Close</string>
+    <string name="about_text">CountaDay was created by Brendan Kenny and Eric Hunt for an Android Development class at the Rochester Institute of Technology.
+        \n \nThis app is designed to help its user keep track of different events happening in their life. Users are able to either keep track of the days since an event took place, as well as the number of days until an event occurs.
+        \n \nPlease enjoy our app!</string>
+</resources>
+>>>>>>> 71c2c6fd7b97cdbb1dec2e80381bbbd44f0e14c9

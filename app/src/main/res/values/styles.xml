@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <resources>
 
     <!-- Base application theme. -->
@@ -47,3 +48,38 @@
     </style>
 
 </resources>
+=======
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#4D8DB7</item>
+        <item name="android:colorPrimaryDark">#146091</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="ToolBarText" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="AddTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#4D8DB7</item>
+        <item name="android:colorPrimaryDark">#146091</item>
+    </style>
+
+    <style name="MyCustomTabLayout" parent="Widget.Design.TabLayout">
+        <item name="tabIndicatorColor">#4D8DB7</item>
+        <item name="tabBackground">@android:color/darker_gray</item>
+        <item name="tabTextAppearance">@android:color/white</item>
+        <item name="tabSelectedTextColor">@android:color/white</item>
+    </style>
+
+    <style name="AppTheme.Popup">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
+    </style>
+
+</resources>
+>>>>>>> 71c2c6fd7b97cdbb1dec2e80381bbbd44f0e14c9
