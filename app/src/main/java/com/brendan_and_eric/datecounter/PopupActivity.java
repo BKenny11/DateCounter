@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 package com.brendan_and_eric.datecounter;
 
 import android.content.Intent;
@@ -17,6 +16,9 @@ import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
+
+import org.joda.time.DateTime;
+import org.joda.time.Days;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -96,46 +98,19 @@ public class PopupActivity extends AppCompatActivity {
         DatePicker date = (DatePicker) findViewById(R.id.Date2);
 
         Date now = Calendar.getInstance().getTime();
-        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy", Locale.US);
-        String formattedDate = formatter.format(now);
 
         String day = String.valueOf(date.getDayOfMonth());
-        String month = String.valueOf(date.getMonth());
+        String month = String.valueOf(date.getMonth()+1);
         String year = String.valueOf(date.getYear());
 
         String dater = month+"/"+day+"/"+year;
+        Date date2 = getDateFromDatePicker(date);
 
-        try {
-            Date date1;
-            Date date2;
+        DateTime dater1 = new DateTime(now);
+        DateTime dater2 = new DateTime(date2);
+        int DaysBetween = Math.abs(Days.daysBetween(dater1, dater2).getDays());
+        String DaysBetweenString = String.valueOf(DaysBetween);
 
-            SimpleDateFormat dates = new SimpleDateFormat("mm/dd/yyyy");
-
-            //Setting dates
-            date1 = dates.parse(formattedDate);
-            date2 = dates.parse(dater);
-
-            String Days = getDateDiffString(date1,date2);
-            long days = getDifferenceDays(date1, date2);
-
-            //Comparing dates
-            long difference = Math.abs(date1.getTime() - date2.getTime());
-            long differenceDates = difference / (24 * 60 * 60 * 1000);
-
-            //Convert long to String
-            String dayDifference = Long.toString(differenceDates);
-
-            intent.putExtra(EXTRA_EVENT_DIFFERENCE,dayDifference+" days");
-
-        } catch (Exception exception) {
-            intent.putExtra(EXTRA_EVENT_DIFFERENCE, "0 days");
-        }
-
-        // DateTime dateTime1 = new DateTime(dater);
-        //DateTime dateTime2 = new DateTime(formattedDate);
-
-        //int weeks = Weeks.weeksBetween(dateTime1, dateTime2).getWeeks();
-        // Log.e("NEW DATE COUNTER","Option 2: "+String.valueOf(weeks));
         Intent intent2 = getIntent();
         String message = editText.getText().toString();
         int pos = intent2.getIntExtra("pos", 0);
@@ -145,91 +120,27 @@ public class PopupActivity extends AppCompatActivity {
             MainActivity.mData2.get(pos + 1).setEvent(message);
             countup.setEvent(message);
             PageFragment2.mAdapter.notifyItemChanged(pos + 1);
+            countup.setDate(dater);
+            countup.setDaysAgo(DaysBetweenString);
         }else {
             Countdown countdown = CDCardAdapter.mCountdowns.get(pos);
             MainActivity.mData.get(pos + 1).setEvent(message);
             countdown.setEvent(message);
             PageFragment.mAdapter.notifyItemChanged(pos + 1);
+            countdown.setDate(dater);
+            countdown.setDaysLeft(DaysBetweenString);
         }
-        //intent.putExtra(EXTRA_EVENT_TITLE, message);
-        //intent.putExtra(EXTRA_EVENT_TYPE, type.toString());
-        //intent.putExtra(EXTRA_EVENT_DATE, dater);
         startActivity(intent);
     }
 
+    public static java.util.Date getDateFromDatePicker(DatePicker datePicker){
+        int day = datePicker.getDayOfMonth();
+        int month = datePicker.getMonth();
+        int year =  datePicker.getYear();
 
-    public String getDateDiffString(Date dateOne, Date dateTwo)
-    {
-        long timeOne = dateOne.getTime();
-        long timeTwo = dateTwo.getTime();
-        long oneDay = 1000 * 60 * 60 * 24;
-        long delta = (timeTwo - timeOne) / oneDay;
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(year, month, day);
 
-        if (delta > 0) {
-            return "dateTwo is " + delta + " days after dateOne";
-        }
-        else {
-            delta *= -1;
-            return "dateTwo is " + delta + " days before dateOne";
-        }
-    }
-    public static long getDifferenceDays(Date d1, Date d2) {
-        long diff = d2.getTime() - d1.getTime();
-        return TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+        return calendar.getTime();
     }
 }
-=======
-package com.brendan_and_eric.datecounter;
-
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.DisplayMetrics;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.RelativeLayout;
-
-public class PopupActivity extends AppCompatActivity {
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_popup);
-
-        DisplayMetrics dm = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(dm);
-
-        int width = dm.widthPixels;
-        int height = dm.heightPixels;
-
-        getWindow().setLayout((int) (width * 0.6), (int) (height * 0.4));
-    }
-
-    public void close(View view){
-        finish();
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_popup, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-}
->>>>>>> 71c2c6fd7b97cdbb1dec2e80381bbbd44f0e14c9

@@ -1,40 +1,3 @@
-<<<<<<< HEAD
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                android:paddingTop="@dimen/activity_vertical_margin"
-                android:paddingBottom="@dimen/activity_vertical_margin"
-                tools:context="com.brendan_and_eric.datecounter.AboutActivity"
-    android:orientation="vertical">
-    <ScrollView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/TextStuff"
-            android:text="Date Counter was created by Brendan Kenny and Eric Hunt for an Android Development class at the Rochester Institure of Technology.
-            \n \nThis app is designed to help its user keep track of different events happening in their life. Users are able to either keep track of the days since an event took place, as well as the number of days until an event occurs."
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:textSize="30dp"
-            android:textColor="#222222"/>
-
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Done"
-            android:onClick="close"
-            android:layout_below="@id/TextStuff"/>
-        </RelativeLayout>
-    </ScrollView>
-
-</LinearLayout>
-=======
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
@@ -75,4 +38,3 @@
     </ScrollView>
 
 </LinearLayout>
->>>>>>> 71c2c6fd7b97cdbb1dec2e80381bbbd44f0e14c9

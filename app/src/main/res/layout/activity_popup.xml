@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
@@ -55,18 +54,6 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/Date2"
             ></DatePicker>
-        <!--<TextView-->
-        <!--android:text="Set Update Notification"-->
-        <!--android:id="@+id/notificationTitle"-->
-        <!--android:layout_marginTop="20dp"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"/>-->
-
-        <!--<Spinner-->
-        <!--android:id="@+id/dialog_Notification_picker"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--/>-->
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -86,45 +73,3 @@
 
     </LinearLayout>
 </ScrollView>
-=======
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                android:paddingTop="@dimen/activity_vertical_margin"
-                android:paddingBottom="@dimen/activity_vertical_margin"
-                android:orientation="vertical"
-                tools:context="com.brendan_and_eric.datecounter.PopupActivity"
-                android:background="@drawable/border">
-
-    <TextView
-        android:text="@string/popup_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"/>
-
-    <Button
-        android:id="@+id/edit_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/edit"/>
-
-    <Button
-        android:id="@+id/delete_button"
-        android:onClick="deleteItem"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/delete"/>
-
-    <Button
-        android:id="@+id/cancel_button2"
-        android:onClick="close"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="@string/cancel"/>
-
-</LinearLayout>
->>>>>>> 71c2c6fd7b97cdbb1dec2e80381bbbd44f0e14c9
