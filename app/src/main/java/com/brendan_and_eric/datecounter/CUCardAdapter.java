@@ -32,7 +32,7 @@ public class CUCardAdapter extends RecyclerView.Adapter<CUCardAdapter.ViewHolder
         Countup countup = mCountups.get(i);
         viewHolder.tvEvent.setText(countup.getEvent());
         viewHolder.tvDate.setText(countup.getDate());
-        viewHolder.tvDaysAgo.setText(countup.getDaysAgo()+" days");
+        viewHolder.tvDaysAgo.setText(countup.getDaysAgo()+" days ago");
     }
 
     public void addItem(String title, String date, String days){
