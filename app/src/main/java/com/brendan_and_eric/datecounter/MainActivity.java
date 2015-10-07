@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -68,30 +69,31 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        Thread t = new Thread() {
-            @Override
-            public void run() {
-                while(true) {
-                    try {
-                        Thread.sleep(1000*60*60*24);
-                        for(int i = 1; i < mData.size(); i++){
-                            int NewDays = Integer.valueOf(mData.get(i).getDaysLeft());
-                            NewDays--;
-                            mData.get(i).setDaysLeft(String.valueOf(NewDays));
-                        }
-                        for(int i = 1; i < mData2.size(); i++){
-                            int NewDays = Integer.valueOf(mData2.get(i).getDaysAgo());
-                            NewDays++;
-                            mData2.get(i).setDaysAgo(String.valueOf(NewDays));
-                        }
-                    } catch (InterruptedException ie) {
-                    }
-                }
-            }
-        };
+
         t.start();
     }
+    Thread t = new Thread() {
+        @Override
+        public void run() {
+            while(true) {
+                try {
 
+                    Thread.sleep(1000*60*60*24);
+                    for(int i = 1; i < mData.size(); i++){
+                        int NewDays = Integer.valueOf(mData.get(i).getDaysLeft());
+                        NewDays--;
+                        mData.get(i).setDaysLeft(String.valueOf(NewDays));
+                    }
+                    for(int i = 1; i < mData2.size(); i++){
+                        int NewDays = Integer.valueOf(mData2.get(i).getDaysAgo());
+                        NewDays++;
+                        mData2.get(i).setDaysAgo(String.valueOf(NewDays));
+                    }
+                } catch (InterruptedException ie) {
+                }
+            }
+        }
+    };
     private class MyPagerAdapter extends FragmentStatePagerAdapter {
 
         public MyPagerAdapter(FragmentManager fm) {
