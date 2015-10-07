@@ -17,8 +17,6 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-
-
     CDCardAdapter CDAdapter = new CDCardAdapter();
     CUCardAdapter CUAdapter = new CUCardAdapter();
 

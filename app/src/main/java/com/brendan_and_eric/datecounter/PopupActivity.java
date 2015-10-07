@@ -45,7 +45,7 @@ public class PopupActivity extends AppCompatActivity {
         int width = dm.widthPixels;
         int height = dm.heightPixels;
 
-        getWindow().setLayout((int) (width * 0.8), (int) (height * 0.6));
+        getWindow().setLayout((int) (width * 0.9), (int) (height * 0.9));
 
         EditText editText2 = (EditText) findViewById(R.id.editNameText2);
         Intent intent3 = getIntent();

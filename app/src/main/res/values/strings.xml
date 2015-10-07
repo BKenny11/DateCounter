@@ -8,7 +8,7 @@
     <string name="counterSetting">Countdown</string>
     <string name="countdownSetting">Countdown</string>
     <string name="countupSetting">Countup</string>
-    <string name="add_edit">Update Event</string>
+    <string name="add_edit">Update</string>
     <string name="date_picker_title">Date of Event:</string>
     <string name="title_activity_about">About This App</string>
     <string name="title_activity_popup">PopupActivity</string>
