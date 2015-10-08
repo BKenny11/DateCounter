@@ -54,14 +54,13 @@ public class AddActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-    public void changeCountType (View view){
-
-    }
 
     public final static String EXTRA_EVENT_TITLE = "com.brenken.myfirstapp.MESSAGE";
     public final static String EXTRA_EVENT_TYPE = "com.brenken.myfirstapp.TYPE";
     public final static String EXTRA_EVENT_DATE = "com.brenken.myfirstapp.DATE";
     public final static String EXTRA_EVENT_DIFFERENCE = "com.brenken.myfirstapp.DIFFERENCE";
+    public final static String EXTRA_DATE_CREATED = "com.brendananderic.CREATED";
+    public final static String EXTRA_DATE = "com.brendananderic.DATE";
 
     public void addItem (View view){
         Intent intent = new Intent(this, MainActivity.class);
@@ -97,6 +96,8 @@ public class AddActivity extends AppCompatActivity {
         intent.putExtra(EXTRA_EVENT_TITLE, message);
         intent.putExtra(EXTRA_EVENT_TYPE, type.toString());
         intent.putExtra(EXTRA_EVENT_DATE, dater);
+        intent.putExtra(EXTRA_DATE_CREATED,now);
+        intent.putExtra(EXTRA_DATE,date2);
         startActivity(intent);
     }
 

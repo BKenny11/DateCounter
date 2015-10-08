@@ -13,7 +13,14 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import org.joda.time.DateTime;
+import org.joda.time.Days;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,12 +46,48 @@ public class MainActivity extends AppCompatActivity {
         if (CDAdapter.getItemCount() ==0) {
 
             for (int i = 1; i < mData.size(); i++) {
-                CDAdapter.addItem(mData.get(i).getEvent(), mData.get(i).getDate(), mData.get(i).getDaysLeft());
+                Date now = Calendar.getInstance().getTime();
+
+                Date date2 = Calendar.getInstance().getTime();
+                DateFormat format = new SimpleDateFormat("MM/dd/yyyy");
+                try {
+                    date2 = format.parse(mData.get(i).getDate());
+                    Log.e("this",date2.toString());
+                }catch (Exception exception){
+                    Log.e("this","didnt work");
+                }
+                DateTime dater1 = new DateTime(now);
+                DateTime dater2 = new DateTime(date2);
+                int DaysBetween = Days.daysBetween(dater1, dater2).getDays();
+
+                String DaysBetweenString = String.valueOf(Math.abs(DaysBetween));
+
+
+
+                CDAdapter.addItem(mData.get(i).getEvent(), mData.get(i).getDate(), DaysBetweenString);
             }
         }
         if (CUAdapter.getItemCount() ==0) {
             for (int i = 1; i < mData2.size(); i++) {
-                CUAdapter.addItem(mData2.get(i).getEvent(), mData2.get(i).getDate(), mData2.get(i).getDaysAgo());
+
+                Date now = Calendar.getInstance().getTime();
+
+                Date date2 = Calendar.getInstance().getTime();
+                DateFormat format = new SimpleDateFormat("MM/dd/yyyy");
+                try {
+                    date2 = format.parse(mData2.get(i).getDate());
+                    Log.e("this",date2.toString());
+                }catch (Exception exception){
+                    Log.e("this","didnt work");
+                }
+                DateTime dater1 = new DateTime(now);
+                DateTime dater2 = new DateTime(date2);
+                int DaysBetween = Days.daysBetween(dater1, dater2).getDays();
+
+                String DaysBetweenString = String.valueOf(Math.abs(DaysBetween));
+
+
+                CUAdapter.addItem(mData2.get(i).getEvent(), mData2.get(i).getDate(), DaysBetweenString);
             }
         }
         // Set a toolbar which will replace the action bar.
