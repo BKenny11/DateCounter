@@ -20,6 +20,7 @@ import android.widget.TextView;
 import org.joda.time.DateTime;
 import org.joda.time.Days;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -49,8 +50,25 @@ public class PopupActivity extends AppCompatActivity {
 
         EditText editText2 = (EditText) findViewById(R.id.editNameText2);
         Intent intent3 = getIntent();
+
         String eventTitle = intent3.getStringExtra("event");
+
         editText2.setText(eventTitle);
+        DatePicker date2 = (DatePicker) findViewById(R.id.Date2);
+        String eventDate = intent3.getStringExtra("date");
+        Log.e("date parameters", "Date passed: "+eventDate);
+        DateFormat format = new SimpleDateFormat("MM/dd/yyyy");
+        try {
+            Date date = format.parse(eventDate);
+           // System.out.println(date);
+            Log.e("date parameters", "year: "+date.getYear()+" month: "+date.getMonth()+" Day: "+date.getDay());
+            date2.updateDate(date.getYear()+1900, date.getMonth(),date.getDay());
+        }catch (Exception exception){
+            Log.e("Date","didnt work");
+        }
+
+
+
         TextView counterSetting = (TextView) findViewById(R.id.eventTitle2);
         boolean countIsUp = intent3.getBooleanExtra("isCountup", false);
         if(countIsUp){

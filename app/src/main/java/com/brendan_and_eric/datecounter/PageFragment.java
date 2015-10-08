@@ -72,6 +72,8 @@ public class PageFragment extends Fragment {
                 intent.putExtra("pos", pos);
                 Countdown countdown = CDCardAdapter.mCountdowns.get(pos);
                 String event = countdown.getEvent();
+                String date = countdown.getDate();
+                intent.putExtra("date",date);
                 intent.putExtra("event", event);
                 intent.putExtra("isCountup", false);
                 startActivity(intent);

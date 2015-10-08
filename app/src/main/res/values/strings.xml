@@ -3,6 +3,7 @@
 
     <string name="hello_world">Countdown / Countup</string>
     <string name="action_settings">About</string>
+    <string name="instructions_settings">Instructions</string>
     <string name="title_activity_add">Add Event</string>
     <string name="hello_Add">Add Date!</string>
     <string name="counterSetting">Countdown</string>
@@ -23,4 +24,8 @@
     <string name="about_text">CountaDay was created by Brendan Kenny and Eric Hunt for an Android Development class at the Rochester Institute of Technology.
         \n \nThis app is designed to help its user keep track of different events happening in their life. Users are able to either keep track of the days since an event took place, as well as the number of days until an event occurs.
         \n \nPlease enjoy our app!</string>
+    <string name="title_activity_instructions">InstructionsActivity</string>
+    <string name="instructions">Click the \'plus\' icon to add an event to either the countdown or countup feature.
+    \n\nClick on an event to edit it\'s properties.
+    \n\nLong press on an event to delete it.</string>
 </resources>

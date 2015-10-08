@@ -147,6 +147,9 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_settings) {
             Intent intent = new Intent(this, AboutActivity.class);
             startActivity(intent);
+        }else{
+            Intent intent = new Intent(this, InstructionsActivity.class);
+            startActivity(intent);
         }
 
         if (id == R.id.addButton) {
