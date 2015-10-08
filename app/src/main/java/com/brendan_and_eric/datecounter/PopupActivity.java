@@ -56,15 +56,13 @@ public class PopupActivity extends AppCompatActivity {
         editText2.setText(eventTitle);
         DatePicker date2 = (DatePicker) findViewById(R.id.Date2);
         String eventDate = intent3.getStringExtra("date");
-        Log.e("date parameters", "Date passed: "+eventDate);
         DateFormat format = new SimpleDateFormat("MM/dd/yyyy");
         try {
             Date date = format.parse(eventDate);
-           // System.out.println(date);
-            Log.e("date parameters", "year: "+date.getYear()+" month: "+date.getMonth()+" Day: "+date.getDay());
-            date2.updateDate(date.getYear()+1900, date.getMonth(),date.getDay());
+            eventDate = eventDate.substring(eventDate.indexOf("/") + 1);
+            eventDate = eventDate.substring(0, eventDate.indexOf("/"));
+            date2.updateDate(date.getYear()+1900, date.getMonth(),Integer.valueOf(eventDate));
         }catch (Exception exception){
-            Log.e("Date","didnt work");
         }
 
 

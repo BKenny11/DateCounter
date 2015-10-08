@@ -67,6 +67,8 @@ public class PageFragment2 extends Fragment {
                 Countup countup = CUCardAdapter.mCountups.get(pos);
                 String event = countup.getEvent();
                 intent.putExtra("event", event);
+                String date = countup.getDate();
+                intent.putExtra("date",date);
                 intent.putExtra("isCountup", true);
                 startActivity(intent);
             }

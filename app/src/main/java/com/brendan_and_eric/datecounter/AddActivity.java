@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -38,6 +39,21 @@ public class AddActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
+
+        Switch sv1 = (Switch)findViewById(R.id.mySwitch);
+
+        sv1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                Switch sv1 = (Switch) findViewById(R.id.mySwitch);
+                TextView tv1 = (TextView) findViewById(R.id.eventTitle);
+                if (isChecked == true) {
+                    tv1.setText("Countup");
+                } else {
+                    tv1.setText("Countdown");
+                }
+            }
+        });
+
     }
 
     @Override
@@ -54,13 +70,7 @@ public class AddActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
     public void changeCountType (View view){
-        Switch sv1 = (Switch)findViewById(R.id.mySwitch);
-        TextView tv1 = (TextView) findViewById(R.id.eventTitle);
-        if(sv1.isChecked() == true) {
-            tv1.setText("Countup");
-        }else{
-            tv1.setText("Countdown");
-        }
+
     }
 
     public final static String EXTRA_EVENT_TITLE = "com.brenken.myfirstapp.MESSAGE";
@@ -72,6 +82,7 @@ public class AddActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         EditText editText = (EditText) findViewById(R.id.editNameText);
         Switch sv1 = (Switch)findViewById(R.id.mySwitch);
+
         Boolean type = sv1.isChecked();
 
         DatePicker date = (DatePicker) findViewById(R.id.Date);
