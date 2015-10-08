@@ -26,26 +26,6 @@
             android:layout_toRightOf="@id/nameTitle"
             />
         <TextView
-            android:text="Type of Event is a"
-            android:layout_marginTop="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
-        <TextView
-            android:text="@string/counterSetting"
-            android:id="@+id/eventTitle"
-            android:textSize="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
-        <Switch
-            android:id="@+id/mySwitch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:onClick="changeCountType"/>
-        <TextView
             android:text="@string/date_picker_title"
             android:layout_marginTop="20dp"
             android:id="@+id/dateTitle"

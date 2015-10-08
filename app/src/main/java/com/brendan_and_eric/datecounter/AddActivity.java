@@ -39,21 +39,6 @@ public class AddActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
-
-        Switch sv1 = (Switch)findViewById(R.id.mySwitch);
-
-        sv1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                Switch sv1 = (Switch) findViewById(R.id.mySwitch);
-                TextView tv1 = (TextView) findViewById(R.id.eventTitle);
-                if (isChecked == true) {
-                    tv1.setText("Countup");
-                } else {
-                    tv1.setText("Countdown");
-                }
-            }
-        });
-
     }
 
     @Override
@@ -81,9 +66,8 @@ public class AddActivity extends AppCompatActivity {
     public void addItem (View view){
         Intent intent = new Intent(this, MainActivity.class);
         EditText editText = (EditText) findViewById(R.id.editNameText);
-        Switch sv1 = (Switch)findViewById(R.id.mySwitch);
 
-        Boolean type = sv1.isChecked();
+        Boolean type = false;
 
         DatePicker date = (DatePicker) findViewById(R.id.Date);
 
@@ -98,8 +82,14 @@ public class AddActivity extends AppCompatActivity {
 
         DateTime dater1 = new DateTime(now);
         DateTime dater2 = new DateTime(date2);
-        int DaysBetween = Math.abs(Days.daysBetween(dater1,dater2).getDays());
-        String DaysBetweenString = String.valueOf(DaysBetween);
+        int DaysBetween = Days.daysBetween(dater1,dater2).getDays();
+        if (DaysBetween > 0){
+            type = false;
+        }else {
+            type = true;
+        }
+
+        String DaysBetweenString = String.valueOf(Math.abs(DaysBetween));
 
         intent.putExtra(EXTRA_EVENT_DIFFERENCE,DaysBetweenString);
 
