@@ -26,7 +26,10 @@
     <Button android:layout_width="fill_parent" android:layout_height="wrap_content"
             android:text="@string/close"
             android:onClick="close"
+            android:textColor="#FFFFFF"
             android:layout_below="@+id/textView" android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" android:layout_marginTop="24dp"/>
+            android:layout_alignParentEnd="true" android:layout_marginTop="24dp"
+            android:background="@drawable/custom_button"
+        />
 
 </RelativeLayout>

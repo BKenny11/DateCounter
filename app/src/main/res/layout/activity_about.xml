@@ -33,7 +33,9 @@
             android:layout_below="@id/TextStuff"
             android:text="@string/close"
             android:onClick="close"
-            android:layout_marginTop="30dp"/>
+            android:layout_marginTop="30dp"
+                android:textColor="#FFFFFF"
+            android:background="@drawable/custom_button"/>
         </RelativeLayout>
     </ScrollView>
 
