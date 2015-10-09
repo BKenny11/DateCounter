@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
                 DateTime dater2 = new DateTime(date2);
                 int DaysBetween = Days.daysBetween(dater1, dater2).getDays();
 
-                String DaysBetweenString = String.valueOf(Math.abs(DaysBetween));
+                String DaysBetweenString = String.valueOf(Math.abs(DaysBetween+1));
 
 
 

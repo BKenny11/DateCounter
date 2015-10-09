@@ -66,6 +66,7 @@ public class AddActivity extends AppCompatActivity {
     public void addItem (View view){
         Intent intent = new Intent(this, MainActivity.class);
         EditText editText = (EditText) findViewById(R.id.editNameText);
+        String message = editText.getText().toString();
 
         Boolean type = false;
 
@@ -84,34 +85,41 @@ public class AddActivity extends AppCompatActivity {
         DateTime dater2 = new DateTime(date2);
         int DaysBetween = Days.daysBetween(dater1,dater2).getDays();
         if (DaysBetween > 0){
-            type = false;
-            String DaysBetweenString = String.valueOf(Math.abs(DaysBetween));
+            if(editText.getText().toString().equals("")) {
+                Toast.makeText(AddActivity.this, "Cannot leave event name empty!", Toast.LENGTH_SHORT).show();
+                return;
+            }else {
+                type = false;
+                String DaysBetweenString = String.valueOf(Math.abs(DaysBetween));
 
-            intent.putExtra(EXTRA_EVENT_DIFFERENCE,DaysBetweenString);
+                intent.putExtra(EXTRA_EVENT_DIFFERENCE, DaysBetweenString);
 
-            String message = editText.getText().toString();
-            intent.putExtra(EXTRA_EVENT_TITLE, message);
-            intent.putExtra(EXTRA_EVENT_TYPE, type.toString());
-            intent.putExtra(EXTRA_EVENT_DATE, dater);
+                intent.putExtra(EXTRA_EVENT_TITLE, message);
+                intent.putExtra(EXTRA_EVENT_TYPE, type.toString());
+                intent.putExtra(EXTRA_EVENT_DATE, dater);
 
-            startActivity(intent);
+                startActivity(intent);
+            }
         }else if(DaysBetween == 0){
             Toast.makeText(AddActivity.this, "Cannot set event for today!", Toast.LENGTH_SHORT).show();
             return;
-        }
-        else {
-            type = true;
-            String DaysBetweenString = String.valueOf(Math.abs(DaysBetween));
+        } else {
+            if(editText.getText().toString().equals("")) {
+                Toast.makeText(AddActivity.this, "Cannot leave event name empty!", Toast.LENGTH_SHORT).show();
+                return;
+            }else {
+                type = true;
+                String DaysBetweenString = String.valueOf(Math.abs(DaysBetween));
 
-            intent.putExtra(EXTRA_EVENT_DIFFERENCE,DaysBetweenString);
+                intent.putExtra(EXTRA_EVENT_DIFFERENCE, DaysBetweenString);
 
-            String message = editText.getText().toString();
-            intent.putExtra(EXTRA_EVENT_TITLE, message);
-            intent.putExtra(EXTRA_EVENT_TYPE, type.toString());
-            intent.putExtra(EXTRA_EVENT_DATE, dater);
-            intent.putExtra(EXTRA_DATE_CREATED,now);
-            intent.putExtra(EXTRA_DATE,date2);
-            startActivity(intent);
+                intent.putExtra(EXTRA_EVENT_TITLE, message);
+                intent.putExtra(EXTRA_EVENT_TYPE, type.toString());
+                intent.putExtra(EXTRA_EVENT_DATE, dater);
+                intent.putExtra(EXTRA_DATE_CREATED, now);
+                intent.putExtra(EXTRA_DATE, date2);
+                startActivity(intent);
+            }
         }
 
 

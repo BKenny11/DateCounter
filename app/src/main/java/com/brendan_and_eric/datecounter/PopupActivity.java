@@ -133,7 +133,6 @@ public class PopupActivity extends AppCompatActivity {
         boolean isCountup = intent2.getBooleanExtra("isCountup", false);
 
         if(isCountup){
-            String eventTitle = editText.getText().toString();
             if (DaysBetween < 0){
                 int DaysAgo = Math.abs(Days.daysBetween(dater1, dater2).getDays());
                 String DaysAgoString = String.valueOf(DaysAgo);
@@ -187,8 +186,8 @@ public class PopupActivity extends AppCompatActivity {
                     }
                 }
 
-            } else if((DaysBetween == 0) && (eventTitle == message)){
-                Toast.makeText(PopupActivity.this, "No changes have been made to event!", Toast.LENGTH_SHORT).show();
+            } else if((DaysBetween == 0)){
+                Toast.makeText(PopupActivity.this, "Cannot make Countup for today's date!", Toast.LENGTH_SHORT).show();
                 return;
             } else {
                 Toast.makeText(PopupActivity.this, "Cannot make Countup after today's date!", Toast.LENGTH_SHORT).show();
@@ -197,12 +196,11 @@ public class PopupActivity extends AppCompatActivity {
             }
             PageFragment2.mAdapter.notifyItemChanged(pos);
         }else {
-            String eventTitle = editText.getText().toString();
             if (DaysBetween < 0){
                 Toast.makeText(PopupActivity.this, "Cannot make Countdown before today's date!", Toast.LENGTH_SHORT).show();
                 return;
-            } else if((DaysBetween == 0) && (eventTitle == message)){
-                Toast.makeText(PopupActivity.this, "No changes have been made to event!", Toast.LENGTH_SHORT).show();
+            } else if((DaysBetween == 0)){
+                Toast.makeText(PopupActivity.this, "Cannot make Countdown for today's date!", Toast.LENGTH_SHORT).show();
                 return;
             }
             else {
