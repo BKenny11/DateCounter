@@ -42,10 +42,12 @@ public class MainActivity extends AppCompatActivity {
         mCounter++;
         mData = dataStore.getCountdowns();
         mData2 = dataStore.getCountups();
-
+        //Both Creates and updates the event cards when created
         if (CDAdapter.getItemCount() ==0) {
 
             for (int i = 1; i < mData.size(); i++) {
+
+
                 Date now = Calendar.getInstance().getTime();
 
                 Date date2 = Calendar.getInstance().getTime();
@@ -112,6 +114,8 @@ public class MainActivity extends AppCompatActivity {
 
         t.start();
     }
+
+    //If app is open for 24 hours, it will update the data to show it.
     Thread t = new Thread() {
         @Override
         public void run() {
@@ -209,7 +213,7 @@ public class MainActivity extends AppCompatActivity {
         dataStore.setNumTimesRun(mCounter);
         dataStore.commitChanges(this);
     }
-
+//Stores Event when added
     public void onResume() {
         super.onResume();
         Intent intent = getIntent();
