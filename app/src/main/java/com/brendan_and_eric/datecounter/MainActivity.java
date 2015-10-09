@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
                 DateTime dater2 = new DateTime(date2);
                 int DaysBetween = Days.daysBetween(dater1, dater2).getDays();
 
-                String DaysBetweenString = String.valueOf(Math.abs(DaysBetween));
+                String DaysBetweenString = String.valueOf(Math.abs(DaysBetween+1));
 
 
 
@@ -194,7 +194,8 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_settings) {
             Intent intent = new Intent(this, AboutActivity.class);
             startActivity(intent);
-        }else{
+        }
+        if (id == R.id.instruction_settings){
             Intent intent = new Intent(this, InstructionsActivity.class);
             startActivity(intent);
         }
