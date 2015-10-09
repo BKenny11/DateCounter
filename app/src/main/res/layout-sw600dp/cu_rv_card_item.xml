@@ -20,7 +20,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/countup_event_name"
-                android:textColor="#4D8DB7"
+                android:textColor="#ff5b58"
                 android:textSize="28sp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"

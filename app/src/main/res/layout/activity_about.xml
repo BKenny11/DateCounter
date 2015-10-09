@@ -24,7 +24,7 @@
             android:text="@string/about_text"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:textSize="18dp"
+            android:textSize="16dp"
             android:textColor="#222222"
             android:paddingTop="320dp"
             android:gravity="center"/>

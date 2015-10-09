@@ -109,19 +109,10 @@ public class AddActivity extends AppCompatActivity {
             intent.putExtra(EXTRA_EVENT_TITLE, message);
             intent.putExtra(EXTRA_EVENT_TYPE, type.toString());
             intent.putExtra(EXTRA_EVENT_DATE, dater);
-
-<<<<<<< HEAD
+            intent.putExtra(EXTRA_DATE_CREATED,now);
+            intent.putExtra(EXTRA_DATE,date2);
             startActivity(intent);
         }
-=======
-        String message = editText.getText().toString();
-        intent.putExtra(EXTRA_EVENT_TITLE, message);
-        intent.putExtra(EXTRA_EVENT_TYPE, type.toString());
-        intent.putExtra(EXTRA_EVENT_DATE, dater);
-        intent.putExtra(EXTRA_DATE_CREATED,now);
-        intent.putExtra(EXTRA_DATE,date2);
-        startActivity(intent);
->>>>>>> 262c8c6a415a528ebcf35004c987ed937bd0d6d1
     }
 
     public static java.util.Date getDateFromDatePicker(DatePicker datePicker){
