@@ -40,9 +40,24 @@ public class CDCardAdapter extends RecyclerView.Adapter<CDCardAdapter.ViewHolder
         countdown.setEvent(title);
         countdown.setDate(date);
         countdown.setDaysLeft(days);
-        mCountdowns.add(countdown);
-
-
+        if(mCountdowns.isEmpty()){
+            mCountdowns.add(countdown);
+        }else {
+            //Order events in ascending order
+            for (int i = 0; i < mCountdowns.size(); i++) {
+                int daysLeft = Integer.parseInt(countdown.getDaysLeft());
+                int nextDaysLeft = Integer.parseInt(mCountdowns.get(i).getDaysLeft());
+                if (daysLeft < nextDaysLeft) {
+                    mCountdowns.add(i, countdown);
+                    return;
+                }else if (i == (mCountdowns.size()-1)){
+                    mCountdowns.add(countdown);
+                    return;
+                }else if (daysLeft >= nextDaysLeft) {
+                    Log.d("CDAdapter", "Skip!");
+                }
+            }
+        }
     }
 
     @Override

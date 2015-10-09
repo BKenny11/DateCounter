@@ -154,7 +154,6 @@ public class MainActivity extends AppCompatActivity {
 
         if (id == R.id.addButton) {
             Intent intent = new Intent(this, AddActivity.class);
-
             startActivity(intent);
         }
 

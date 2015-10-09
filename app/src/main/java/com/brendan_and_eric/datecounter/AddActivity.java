@@ -22,6 +22,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.joda.time.DateTime;
 import org.joda.time.Days;
@@ -54,9 +55,6 @@ public class AddActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-    public void changeCountType (View view){
-
-    }
 
     public final static String EXTRA_EVENT_TITLE = "com.brenken.myfirstapp.MESSAGE";
     public final static String EXTRA_EVENT_TYPE = "com.brenken.myfirstapp.TYPE";
@@ -85,19 +83,33 @@ public class AddActivity extends AppCompatActivity {
         int DaysBetween = Days.daysBetween(dater1,dater2).getDays();
         if (DaysBetween > 0){
             type = false;
-        }else {
-            type = true;
+            String DaysBetweenString = String.valueOf(Math.abs(DaysBetween));
+
+            intent.putExtra(EXTRA_EVENT_DIFFERENCE,DaysBetweenString);
+
+            String message = editText.getText().toString();
+            intent.putExtra(EXTRA_EVENT_TITLE, message);
+            intent.putExtra(EXTRA_EVENT_TYPE, type.toString());
+            intent.putExtra(EXTRA_EVENT_DATE, dater);
+
+            startActivity(intent);
+        }else if(DaysBetween == 0){
+            Toast.makeText(AddActivity.this, "Cannot set event for today!", Toast.LENGTH_SHORT).show();
+            return;
         }
+        else {
+            type = true;
+            String DaysBetweenString = String.valueOf(Math.abs(DaysBetween));
 
-        String DaysBetweenString = String.valueOf(Math.abs(DaysBetween));
+            intent.putExtra(EXTRA_EVENT_DIFFERENCE,DaysBetweenString);
 
-        intent.putExtra(EXTRA_EVENT_DIFFERENCE,DaysBetweenString);
+            String message = editText.getText().toString();
+            intent.putExtra(EXTRA_EVENT_TITLE, message);
+            intent.putExtra(EXTRA_EVENT_TYPE, type.toString());
+            intent.putExtra(EXTRA_EVENT_DATE, dater);
 
-        String message = editText.getText().toString();
-        intent.putExtra(EXTRA_EVENT_TITLE, message);
-        intent.putExtra(EXTRA_EVENT_TYPE, type.toString());
-        intent.putExtra(EXTRA_EVENT_DATE, dater);
-        startActivity(intent);
+            startActivity(intent);
+        }
     }
 
     public static java.util.Date getDateFromDatePicker(DatePicker datePicker){

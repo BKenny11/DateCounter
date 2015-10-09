@@ -2,6 +2,7 @@ package com.brendan_and_eric.datecounter;
 
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,7 +41,24 @@ public class CUCardAdapter extends RecyclerView.Adapter<CUCardAdapter.ViewHolder
         countup.setEvent(title);
         countup.setDate(date);
         countup.setDaysAgo(days);
-        mCountups.add(countup);
+        if(mCountups.isEmpty()){
+            mCountups.add(countup);
+       }else {
+            //Order events in ascending order
+            for (int i = 0; i < mCountups.size(); i++) {
+                int daysAgo = Integer.parseInt(countup.getDaysAgo());
+                int nextDaysAgo = Integer.parseInt(mCountups.get(i).getDaysAgo());
+                if (daysAgo < nextDaysAgo) {
+                    mCountups.add(i, countup);
+                    return;
+                }else if (i == (mCountups.size()-1)){
+                    mCountups.add(countup);
+                    return;
+                }else if (daysAgo >= nextDaysAgo) {
+                    Log.d("CUAdapter", "Skip!");
+                }
+           }
+        }
     }
 
     @Override

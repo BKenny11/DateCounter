@@ -16,6 +16,7 @@ import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.joda.time.DateTime;
 import org.joda.time.Days;
@@ -48,12 +49,15 @@ public class PopupActivity extends AppCompatActivity {
 
         getWindow().setLayout((int) (width * 0.9), (int) (height * 0.9));
 
+        //get name of event and set it to the edit text field
         EditText editText2 = (EditText) findViewById(R.id.editNameText2);
         Intent intent3 = getIntent();
 
         String eventTitle = intent3.getStringExtra("event");
 
         editText2.setText(eventTitle);
+
+        //set datepicker to date of event
         DatePicker date2 = (DatePicker) findViewById(R.id.Date2);
         String eventDate = intent3.getStringExtra("date");
         DateFormat format = new SimpleDateFormat("MM/dd/yyyy");
@@ -103,10 +107,6 @@ public class PopupActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public final static String EXTRA_EVENT_TITLE = "com.brenken.myfirstapp.MESSAGE";
-    public final static String EXTRA_EVENT_TYPE = "com.brenken.myfirstapp.TYPE";
-    public final static String EXTRA_EVENT_DATE = "com.brenken.myfirstapp.DATE";
-    public final static String EXTRA_EVENT_DIFFERENCE = "com.brenken.myfirstapp.DIFFERENCE";
     public void addItem (View view){
         Intent intent = new Intent(this, MainActivity.class);
         EditText editText = (EditText) findViewById(R.id.editNameText2);
@@ -124,29 +124,85 @@ public class PopupActivity extends AppCompatActivity {
 
         DateTime dater1 = new DateTime(now);
         DateTime dater2 = new DateTime(date2);
-        int DaysBetween = Math.abs(Days.daysBetween(dater1, dater2).getDays());
+        int DaysBetween = Days.daysBetween(dater1, dater2).getDays();
         String DaysBetweenString = String.valueOf(DaysBetween);
 
         Intent intent2 = getIntent();
         String message = editText.getText().toString();
         int pos = intent2.getIntExtra("pos", 0);
         boolean isCountup = intent2.getBooleanExtra("isCountup", false);
+
         if(isCountup){
-            Countup countup = CUCardAdapter.mCountups.get(pos);
-            MainActivity.mData2.get(pos + 1).setEvent(message);
-            countup.setEvent(message);
+            if (DaysBetween < 0){
+                int DaysAgo = Math.abs(Days.daysBetween(dater1, dater2).getDays());
+                String DaysAgoString = String.valueOf(DaysAgo);
+                //Countup
+                Countup countup = CUCardAdapter.mCountups.get(pos);
+                MainActivity.mData2.get(pos + 1).setEvent(message);
+                MainActivity.mData2.get(pos + 1).setDate(dater);
+                MainActivity.mData2.get(pos + 1).setDaysAgo(DaysAgoString);
+                countup.setEvent(message);
+                countup.setDate(dater);
+                countup.setDaysAgo(DaysAgoString);
+                //Reordering countups
+                for (int i = 0; i < CUCardAdapter.mCountups.size(); i++) {
+                    int daysAgo = Integer.parseInt(countup.getDaysAgo());
+                    int nextDaysAgo = Integer.parseInt(CUCardAdapter.mCountups.get(i).getDaysAgo());
+                    if (daysAgo < nextDaysAgo) {
+                        CUCardAdapter.mCountups.remove(pos);
+                        CUCardAdapter.mCountups.add(i, countup);
+                        startActivity(intent);
+                        return;
+                    } else if (i == (CUCardAdapter.mCountups.size() - 1)) {
+                        CUCardAdapter.mCountups.remove(pos);
+                        CUCardAdapter.mCountups.add(countup);
+                        startActivity(intent);
+                        return;
+                    } else if (daysAgo >= nextDaysAgo) {
+                        Log.d("CUAdapter", "Skip!");
+                    }
+                }
+            }else {
+                Toast.makeText(PopupActivity.this, "Cannot make Countup after today's date!", Toast.LENGTH_SHORT).show();
+                Log.d("popup", DaysBetweenString);
+                return;
+            }
             PageFragment2.mAdapter.notifyItemChanged(pos + 1);
-            countup.setDate(dater);
-            countup.setDaysAgo(DaysBetweenString);
         }else {
-            Countdown countdown = CDCardAdapter.mCountdowns.get(pos);
-            MainActivity.mData.get(pos + 1).setEvent(message);
-            countdown.setEvent(message);
+            if (DaysBetween < 0){
+                Toast.makeText(PopupActivity.this, "Cannot make Countdown before today's date!", Toast.LENGTH_SHORT).show();
+                return;
+            }else {
+                //Countdown
+                Countdown countdown = CDCardAdapter.mCountdowns.get(pos);
+                MainActivity.mData.get(pos + 1).setEvent(message);
+                MainActivity.mData.get(pos + 1).setDate(dater);
+                MainActivity.mData.get(pos + 1).setDaysLeft(DaysBetweenString);
+                countdown.setEvent(message);
+                countdown.setDate(dater);
+                countdown.setDaysLeft(DaysBetweenString);
+                //Reordering countdowns
+                for (int i = 0; i < CDCardAdapter.mCountdowns.size(); i++) {
+                    int daysAgo = Integer.parseInt(countdown.getDaysLeft());
+                    int nextDaysAgo = Integer.parseInt(CDCardAdapter.mCountdowns.get(i).getDaysLeft());
+                    if (daysAgo < nextDaysAgo) {
+                        CDCardAdapter.mCountdowns.remove(pos);
+                        CDCardAdapter.mCountdowns.add(i, countdown);
+                        startActivity(intent);
+                        return;
+                    } else if (i == (CDCardAdapter.mCountdowns.size() - 1)) {
+                        CDCardAdapter.mCountdowns.remove(pos);
+                        CDCardAdapter.mCountdowns.add(countdown);
+                        startActivity(intent);
+                        return;
+                    } else if (daysAgo >= nextDaysAgo) {
+                        Log.d("CDAdapter", "Skip!");
+                    }
+                }
+            }
+
             PageFragment.mAdapter.notifyItemChanged(pos + 1);
-            countdown.setDate(dater);
-            countdown.setDaysLeft(DaysBetweenString);
         }
-        startActivity(intent);
     }
 
     public static java.util.Date getDateFromDatePicker(DatePicker datePicker){
