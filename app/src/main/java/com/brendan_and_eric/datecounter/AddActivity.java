@@ -60,6 +60,8 @@ public class AddActivity extends AppCompatActivity {
     public final static String EXTRA_EVENT_TYPE = "com.brenken.myfirstapp.TYPE";
     public final static String EXTRA_EVENT_DATE = "com.brenken.myfirstapp.DATE";
     public final static String EXTRA_EVENT_DIFFERENCE = "com.brenken.myfirstapp.DIFFERENCE";
+    public final static String EXTRA_DATE_CREATED = "com.brendananderic.CREATED";
+    public final static String EXTRA_DATE = "com.brendananderic.DATE";
 
     public void addItem (View view){
         Intent intent = new Intent(this, MainActivity.class);
@@ -108,8 +110,18 @@ public class AddActivity extends AppCompatActivity {
             intent.putExtra(EXTRA_EVENT_TYPE, type.toString());
             intent.putExtra(EXTRA_EVENT_DATE, dater);
 
+<<<<<<< HEAD
             startActivity(intent);
         }
+=======
+        String message = editText.getText().toString();
+        intent.putExtra(EXTRA_EVENT_TITLE, message);
+        intent.putExtra(EXTRA_EVENT_TYPE, type.toString());
+        intent.putExtra(EXTRA_EVENT_DATE, dater);
+        intent.putExtra(EXTRA_DATE_CREATED,now);
+        intent.putExtra(EXTRA_DATE,date2);
+        startActivity(intent);
+>>>>>>> 262c8c6a415a528ebcf35004c987ed937bd0d6d1
     }
 
     public static java.util.Date getDateFromDatePicker(DatePicker datePicker){
