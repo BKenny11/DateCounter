@@ -194,7 +194,8 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_settings) {
             Intent intent = new Intent(this, AboutActivity.class);
             startActivity(intent);
-        }else{
+        }
+        if (id == R.id.instruction_settings){
             Intent intent = new Intent(this, InstructionsActivity.class);
             startActivity(intent);
         }
