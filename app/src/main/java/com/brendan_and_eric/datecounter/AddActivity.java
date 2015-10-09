@@ -113,7 +113,13 @@ public class AddActivity extends AppCompatActivity {
             intent.putExtra(EXTRA_DATE,date2);
             startActivity(intent);
         }
-    }
+
+
+            startActivity(intent);
+        }
+
+
+
 
     public static java.util.Date getDateFromDatePicker(DatePicker datePicker){
         int day = datePicker.getDayOfMonth();
