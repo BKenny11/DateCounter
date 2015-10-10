@@ -152,13 +152,21 @@ public class PopupActivity extends AppCompatActivity {
                         CUCardAdapter.mCountups.remove(pos);
                         MainActivity.mData2.remove(pos+1);
 
+                        PageFragment2.mAdapter.notifyItemRemoved(pos);
+                        MainActivity.CUAdapter.notifyItemRemoved(pos + 1);
+
                         CUCardAdapter.mCountups.add(i, countup);
-                        MainActivity.mData2.add(i+1, countup);
+                        MainActivity.mData2.add(i + 1, countup);
+
+                        PageFragment2.mAdapter.notifyItemInserted(i);
+                        MainActivity.CUAdapter.notifyItemRemoved(i + 1);
 
                         MainActivity.mData2.get(i+1).setEvent(message);
                         MainActivity.mData2.get(i+1).setDate(dater);
-                        MainActivity.mData2.get(i+1).setDaysAgo(DaysBetweenString);
+                        MainActivity.mData2.get(i+1).setDaysAgo(DaysAgoString);
 
+                        PageFragment2.mAdapter.notifyItemChanged(i);
+                        MainActivity.CUAdapter.notifyItemChanged(i+1);
                         startActivity(intent);
                         return;
                     }  else if (i == pos){
@@ -166,26 +174,34 @@ public class PopupActivity extends AppCompatActivity {
                         MainActivity.mData2.set(i+1, countup);
 
                         PageFragment2.mAdapter.notifyItemChanged(i);
+                        MainActivity.CUAdapter.notifyItemChanged(i+1);
                         startActivity(intent);
                         return;
                     } else if (i == (CUCardAdapter.mCountups.size() - 1)) {
                         CUCardAdapter.mCountups.remove(pos);
                         MainActivity.mData2.remove(pos);
 
-                        CUCardAdapter.mCountups.add(countup);
-                        MainActivity.mData2.add(countup);
+                        PageFragment2.mAdapter.notifyItemRemoved(pos);
+                        MainActivity.CUAdapter.notifyItemRemoved(pos);
+
+                        CUCardAdapter.mCountups.add(i, countup);
+                        MainActivity.mData2.add(i, countup);
+
+                        PageFragment2.mAdapter.notifyDataSetChanged();
+                        MainActivity.CUAdapter.notifyDataSetChanged();
 
                         MainActivity.mData2.get(i).setEvent(message);
                         MainActivity.mData2.get(i).setDate(dater);
-                        MainActivity.mData2.get(i).setDaysAgo(DaysBetweenString);
+                        MainActivity.mData2.get(i).setDaysAgo(DaysAgoString);
 
+                        PageFragment2.mAdapter.notifyItemChanged(i);
+                        MainActivity.CUAdapter.notifyItemChanged(i);
                         startActivity(intent);
                         return;
                     } else if (daysAgo >= nextDaysAgo) {
                         Log.d("CUAdapter", "Skip!");
                     }
                 }
-
             } else if((DaysBetween == 0)){
                 Toast.makeText(PopupActivity.this, "Cannot make Countup for today's date!", Toast.LENGTH_SHORT).show();
                 return;
@@ -194,7 +210,6 @@ public class PopupActivity extends AppCompatActivity {
                 Log.d("popup", DaysBetweenString);
                 return;
             }
-            PageFragment2.mAdapter.notifyItemChanged(pos);
         }else {
             if (DaysBetween < 0){
                 Toast.makeText(PopupActivity.this, "Cannot make Countdown before today's date!", Toast.LENGTH_SHORT).show();
@@ -220,13 +235,21 @@ public class PopupActivity extends AppCompatActivity {
                         CDCardAdapter.mCountdowns.remove(pos);
                         MainActivity.mData.remove(pos+1);
 
+                        PageFragment.mAdapter.notifyItemRemoved(pos);
+                        MainActivity.CDAdapter.notifyItemRemoved(pos + 1);
+
                         CDCardAdapter.mCountdowns.add(i, countdown);
-                        MainActivity.mData.add(i+1, countdown);
+                        MainActivity.mData.add(i + 1, countdown);
+
+                        PageFragment.mAdapter.notifyItemInserted(i);
+                        MainActivity.CDAdapter.notifyItemRemoved(i + 1);
 
                         MainActivity.mData.get(i+1).setEvent(message);
                         MainActivity.mData.get(i+1).setDate(dater);
                         MainActivity.mData.get(i+1).setDaysLeft(DaysBetweenString);
 
+                        PageFragment.mAdapter.notifyItemChanged(i);
+                        MainActivity.CDAdapter.notifyItemChanged(i + 1);
                         startActivity(intent);
                         return;
                     } else if (i == pos){
@@ -234,19 +257,28 @@ public class PopupActivity extends AppCompatActivity {
                         MainActivity.mData.set(i+1, countdown);
 
                         PageFragment.mAdapter.notifyItemChanged(i);
+                        MainActivity.CDAdapter.notifyItemChanged(i+1);
                         startActivity(intent);
                         return;
                     } else if (i == (CDCardAdapter.mCountdowns.size() - 1)) {
                         CDCardAdapter.mCountdowns.remove(pos);
                         MainActivity.mData.remove(pos);
 
+                        PageFragment.mAdapter.notifyItemRemoved(pos);
+                        MainActivity.CDAdapter.notifyItemRemoved(pos);
+
                         CDCardAdapter.mCountdowns.add(countdown);
                         MainActivity.mData.add(countdown);
+
+                        PageFragment.mAdapter.notifyDataSetChanged();
+                        MainActivity.CDAdapter.notifyDataSetChanged();
 
                         MainActivity.mData.get(i).setEvent(message);
                         MainActivity.mData.get(i).setDate(dater);
                         MainActivity.mData.get(i).setDaysLeft(DaysBetweenString);
 
+                        PageFragment.mAdapter.notifyItemChanged(i);
+                        MainActivity.CDAdapter.notifyItemChanged(i);
                         startActivity(intent);
                         return;
                     } else if (daysAgo >= nextDaysAgo) {

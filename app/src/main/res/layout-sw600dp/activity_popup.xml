@@ -55,18 +55,22 @@
                     android:id="@+id/Date2"
             ></DatePicker>
         <Button
+            android:background="@drawable/custom_button"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="@string/add_edit"
+            android:textColor="#FFFFFF"
             android:layout_alignParentBottom="true"
             android:onClick="addItem"
             />
         <Button
+            android:background="@drawable/custom_button"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="@string/cancel"
+            android:textColor="#FFFFFF"
             android:layout_alignParentBottom="true"
             android:onClick="closeWindow"
             />

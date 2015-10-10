@@ -24,8 +24,8 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
-    CDCardAdapter CDAdapter = new CDCardAdapter();
-    CUCardAdapter CUAdapter = new CUCardAdapter();
+    static CDCardAdapter CDAdapter = new CDCardAdapter();
+    static CUCardAdapter CUAdapter = new CUCardAdapter();
 
     int mCounter;
     public static ArrayList<Countdown> mData = new ArrayList();
